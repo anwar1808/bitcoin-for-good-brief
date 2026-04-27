@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin for Good — Confidential Brief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #F7F3ED;
+      --surface:    #FFFFFF;
+      --surface2:   #FBF7F1;
+      --text:       #1F1812;
+      --text-mid:   #4A3F35;
+      --muted:      #6B5F54;
+      --muted-soft: #8E8275;
+      --gold:       #F7931A;
+      --gold-soft:  rgba(247,147,26,0.10);
+      --gold-edge:  rgba(247,147,26,0.25);
+      --moss:       #2F5233;
+      --moss-soft:  rgba(47,82,51,0.10);
+      --claret:     #8A3324;
+      --claret-soft: rgba(138,51,36,0.08);
+      --border:     #E8DFD2;
+      --border-soft: rgba(232,223,210,0.6);
+      --rule:       #D4C9B8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "liga", "kern";
+    }
+
+    ::selection { background: var(--gold-soft); }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── Password screen ──────────────────────────────────────────── */
+    #pw-screen {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 22px;
+    }
+    #pw-screen .pw-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--text);
+    }
+    #pw-screen .pw-logo em { color: var(--gold); font-style: italic; font-weight: 700; }
+    #pw-screen p { color: var(--muted); font-size: 14px; font-family: 'Inter', sans-serif; }
+    #pw-screen input {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 20px; font-size: 15px;
+      color: var(--text); width: 300px; outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s; text-align: center; letter-spacing: 0.08em;
+    }
+    #pw-screen input:focus { border-color: var(--gold); }
+    #pw-screen button {
+      background: var(--text);
+      color: var(--bg); border: none; border-radius: 8px;
+      padding: 13px 32px; font-size: 14px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif; width: 300px;
+      letter-spacing: 0.04em; transition: opacity 0.2s;
+    }
+    #pw-screen button:hover { opacity: 0.88; }
+    #pw-screen .pw-error { color: var(--claret); font-size: 13px; min-height: 20px; font-family: 'Inter', sans-serif; }
+
+    /* ── Layout ───────────────────────────────────────────────────── */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    .column { max-width: 680px; }
+    section { padding: 88px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── Typography ───────────────────────────────────────────────── */
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+    .sans  { font-family: 'Inter', system-ui, sans-serif; }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(44px, 6.5vw, 84px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+    }
+    h1 em { font-style: italic; font-weight: 700; color: var(--gold); }
+
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(26px, 3.6vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    h2 em { font-style: italic; color: var(--gold); font-weight: 700; }
+
+    h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    p { color: var(--text-mid); margin-bottom: 18px; font-size: 17px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+    p em { font-style: italic; }
+    p a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-soft); }
+    p a:hover { border-bottom-color: var(--gold); }
+
+    .lead {
+      font-size: 20px; line-height: 1.6;
+      color: var(--text-mid); font-weight: 400;
+    }
+    .lead strong { color: var(--text); font-weight: 500; }
+
+    .label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 20px;
+    }
+
+    .pill-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-soft);
+      border: 1px solid var(--gold-edge);
+      border-radius: 100px; padding: 6px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; color: var(--gold); font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .pill-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+    /* ── Spine banner ─────────────────────────────────────────────── */
+    .spine {
+      background: var(--text);
+      color: var(--bg);
+      padding: 22px 0;
+    }
+    .spine-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .spine-clause {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(16px, 1.8vw, 21px);
+      font-weight: 700;
+      padding: 0 28px;
+      color: var(--bg);
+    }
+    .spine-clause em { color: var(--gold); font-style: italic; }
+    .spine-divider { color: rgba(247,243,237,0.35); font-size: 18px; }
+
+    /* ── Cards ────────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .card-sm { padding: 22px; }
+    .card h3 { margin-bottom: 10px; }
+    .card p { font-size: 15px; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+
+    .callout {
+      border-left: 3px solid var(--gold);
+      background: var(--gold-soft);
+      border-radius: 0 6px 6px 0;
+      padding: 20px 26px;
+      margin: 28px 0;
+    }
+    .callout p { color: var(--text); font-size: 16px; margin-bottom: 10px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .insight {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 26px;
+      margin: 28px 0;
+    }
+    .insight h4 { margin-bottom: 10px; color: var(--moss); }
+    .insight p { font-size: 16px; margin-bottom: 0; }
+
+    .pullquote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.35;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--text);
+      border-left: 2px solid var(--gold);
+      padding: 10px 0 10px 28px;
+      margin: 32px 0;
+      max-width: 620px;
+    }
+    .pullquote cite {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 12px; font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 14px;
+    }
+
+    /* ── Grid ─────────────────────────────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    @media(max-width: 780px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .wrap { padding: 0 24px; }
+    }
+
+    /* ── Tables ───────────────────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 24px 0; }
+    th {
+      text-align: left;
+      padding: 14px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--border-soft);
+      color: var(--text-mid);
+      vertical-align: top;
+      font-size: 15px;
+    }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--text); font-weight: 600; }
+    .num { font-variant-numeric: tabular-nums; font-family: 'Inter', sans-serif; }
+
+    /* ── Badges ───────────────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .badge-moss  { background: var(--moss-soft);  color: var(--moss); }
+    .badge-gold  { background: var(--gold-soft);  color: var(--gold); }
+    .badge-muted { background: rgba(107,95,84,0.1); color: var(--muted); }
+    .badge-claret { background: var(--claret-soft); color: var(--claret); }
+
+    /* ── Stat block ───────────────────────────────────────────────── */
+    .stat {
+      padding: 24px 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .stat-value {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px; font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .stat-value em { color: var(--gold); font-style: italic; }
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-top: 10px;
+    }
+
+    /* ── Scenario table (bear/base/bull) ──────────────────────────── */
+    .scenario {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--surface);
+    }
+    .scenario h4 { color: var(--muted); }
+    .scenario-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .scenario.bear .scenario-label { color: var(--muted); }
+    .scenario.base .scenario-label { color: var(--moss); }
+    .scenario.bull .scenario-label { color: var(--gold); }
+    .scenario-row {
+      display: flex; justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 14px;
+    }
+    .scenario-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .scenario-row span:first-child { color: var(--muted); font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .scenario-row span:last-child { color: var(--text); font-variant-numeric: tabular-nums; font-family: 'Inter', sans-serif; font-weight: 600; }
+
+    /* ── Moat panel ───────────────────────────────────────────────── */
+    .moat-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 0;
+    }
+    .moat-item {
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border-soft);
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .moat-item:last-child { border-bottom: none; }
+    .moat-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px; font-weight: 800;
+      color: var(--gold); font-style: italic;
+      line-height: 1;
+    }
+    .moat-item h3 { font-size: 17px; margin-bottom: 4px; }
+    .moat-item p { font-size: 15px; margin-bottom: 0; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    footer {
+      padding: 46px 0 60px;
+      border-top: 1px solid var(--border);
+      background: var(--surface2);
+    }
+    footer p { font-size: 13px; color: var(--muted); margin: 0; font-family: 'Inter', sans-serif; }
+    .footer-mark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px; font-weight: 800;
+      color: var(--text); letter-spacing: -0.015em;
+    }
+    .footer-mark em { color: var(--gold); font-style: italic; }
+    .footer-flex {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+
+    /* ── Header ───────────────────────────────────────────────────── */
+    header {
+      padding: 100px 0 0;
+      position: relative; overflow: hidden;
+    }
+    header h1 { margin-bottom: 28px; }
+    .tagline {
+      font-size: clamp(17px, 2vw, 22px);
+      color: var(--text-mid);
+      max-width: 640px; line-height: 1.6;
+      margin-bottom: 32px; font-weight: 400;
+    }
+    .tagline strong { color: var(--text); font-weight: 500; }
+
+    .meta-strip {
+      display: flex; flex-wrap: wrap; gap: 28px;
+      margin-top: 40px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+    .meta-item h4 { margin-bottom: 4px; font-size: 10px; }
+    .meta-item p { font-size: 14px; color: var(--text); margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; }
+
+    /* Section anchor offset */
+    section[id] { scroll-margin-top: 20px; }
+
+    /* TOC */
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 32px;
+      margin-top: 24px;
+      max-width: 800px;
+    }
+    .toc a {
+      display: flex; justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .toc a:hover { color: var(--gold); }
+    .toc a span:first-child { display: flex; gap: 12px; }
+    .toc a span:first-child::before {
+      content: attr(data-num);
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      min-width: 20px;
+    }
+    .toc a span:last-child { color: var(--muted); font-size: 11px; }
+    @media(max-width: 780px) { .toc { grid-template-columns: 1fr; } }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ── PASSWORD SCREEN ────────────────────────────────────────────── -->
+<div id="pw-screen">
+  <div class="pw-logo">Bitcoin <em>for</em> Good</div>
+  <p>Confidential strategy brief. Enter access key to continue.</p>
+  <input id="pw-input" type="password" placeholder="Access key" autocomplete="off" />
+  <button id="pw-submit">Open brief</button>
+  <div id="pw-error" class="pw-error"></div>
+</div>
+
+<div id="content" style="display: none;">
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  HEADER                                                            -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<header>
+  <div class="wrap">
+    <span class="pill-eyebrow"><span class="dot"></span>Confidential Brief · April 2026</span>
+    <h1>Bitcoin wealth, <em>without the tax friction,</em> into causes that matter.</h1>
+    <p class="tagline">
+      A UK-native donor-advised fund for crypto philanthropy. Built for hodlers who want their appreciated assets
+      to reach charities <strong>without triggering a CGT event, without surrendering their identity, and without
+      having to pick a charity willing to touch crypto directly.</strong>
+    </p>
+
+    <div class="meta-strip">
+      <div class="meta-item">
+        <h4>Status</h4>
+        <p>Strategy &amp; Research</p>
+      </div>
+      <div class="meta-item">
+        <h4>Lead</h4>
+        <p>Founder · London</p>
+      </div>
+      <div class="meta-item">
+        <h4>Legal Vehicle</h4>
+        <p>Sats for Good Ltd + Foundation (CIO)</p>
+      </div>
+      <div class="meta-item">
+        <h4>Launch Market</h4>
+        <p>United Kingdom, 2026</p>
+      </div>
+    </div>
+
+    <div class="toc">
+      <a href="#s01"><span data-num="01">The Vision</span><span></span></a>
+      <a href="#s02"><span data-num="02">The Problem</span><span></span></a>
+      <a href="#s03"><span data-num="03">How It Works</span><span></span></a>
+      <a href="#s04"><span data-num="04">Market &amp; Opportunity</span><span></span></a>
+      <a href="#s05"><span data-num="05">Revenue Stack</span><span></span></a>
+      <a href="#s06"><span data-num="06">Competitive Landscape</span><span></span></a>
+      <a href="#s07"><span data-num="07">Why Us — The Moat</span><span></span></a>
+      <a href="#s08"><span data-num="08">Partners &amp; Infrastructure</span><span></span></a>
+      <a href="#s09"><span data-num="09">Regulatory Structure</span><span></span></a>
+      <a href="#s10"><span data-num="10">Strategic Priorities</span><span></span></a>
+      <a href="#s11"><span data-num="11">Expansion</span><span></span></a>
+      <a href="#s12"><span data-num="12">Exit</span><span></span></a>
+      <a href="#sA"><span data-num="A">Cost &amp; Profitability</span><span></span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ── SPINE ──────────────────────────────────────────────────────── -->
+<div class="spine" style="margin-top: 72px;">
+  <div class="spine-inner">
+    <span class="spine-clause">No <em>capital gains tax.</em></span>
+    <span class="spine-divider">✦</span>
+    <span class="spine-clause">Any <em>UK charity.</em></span>
+    <span class="spine-divider">✦</span>
+    <span class="spine-clause">Privacy <em>by default.</em></span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  01 — THE VISION                                                   -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s01">
+  <div class="wrap">
+    <span class="label">01 — The Vision</span>
+    <h2>Built for hodlers who <em>already know what they want to do.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      Most Bitcoin hodlers with meaningful appreciated positions don't lack the desire to give. They lack the
+      plumbing. Selling crypto to donate the cash triggers an 18–24% CGT event on the gain. Charities don't
+      accept crypto directly. And every existing UK donation platform requires the donor to surrender their full
+      identity before the gift can reach the cause.
+    </p>
+    <p class="column">
+      The result, for the donor, is a small but persistent friction that kills the impulse — one more reason to
+      "do it next year." For the charity, it is an entire category of wealth — young, growing, meaningfully
+      concentrated — that never arrives.
+    </p>
+
+    <div class="pullquote">
+      Bitcoin wealth should be able to flow into causes without being vaporised by tax, fractured by UX, or
+      surrendered by privacy.
+      <cite>— The founding instinct</cite>
+    </div>
+
+    <p class="column">
+      The UK tax code already allows exactly this. Section 257 of the Taxation of Chargeable Gains Act 1992
+      treats a disposal of a chargeable asset to a charity as a no-gain, no-loss event — no CGT for the donor.
+      HMRC has classified crypto as a chargeable asset since 2018. The legal route has been open for nearly a
+      decade. What's missing is the platform.
+    </p>
+
+    <div class="insight">
+      <h4>Why this is the moment</h4>
+      <p>UK crypto hodlers accrued an estimated £10bn+ in realised gains in 2025. The annual CGT exempt amount
+      sits at a decade-low £3,000. The tax drag has never been more acute for UK donors — and s.257 TCGA 1992
+      has never been more underused.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  02 — THE PROBLEM                                                  -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s02">
+  <div class="wrap">
+    <span class="label">02 — The Problem</span>
+    <h2>Three frictions between <em>conviction and the gift.</em></h2>
+
+    <p class="column" style="margin-top: 20px; margin-bottom: 36px;">
+      Every UK crypto hodler who has tried to donate an appreciated position has hit at least one of these.
+      Most have hit all three and given up.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Capital gains friction</h3>
+        <p>Selling crypto to donate the cash triggers 18% CGT for basic-rate taxpayers, 24% for higher-rate.
+        On a £10k gift with a £6k gain, the tax hit can be £1,440 — a wall that donors absorb reluctantly or
+        walk away from.</p>
+      </div>
+      <div class="card">
+        <h3>Charity readiness</h3>
+        <p>Most UK charities lack the treasury infrastructure, banking relationships, or trustee comfort to
+        accept crypto directly. The few that do process it slowly and expensively, or rely on US-origin
+        platforms that don't speak UK tax law.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy exposure</h3>
+        <p>Every existing UK donation platform surfaces the donor's full identity to the receiving charity by
+        default. For many HNW donors — and for the cultural traditions that prize anonymous giving — this is
+        the silent blocker.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 44px;">
+      <p><strong>The subtler point.</strong> Gifting crypto through an s.257 route does not just avoid CGT on the
+      gift itself. It removes the gain from the donor's annual chargeable-gains calculation entirely. That can
+      keep a donor under the £3k annual exemption across all their disposals, or keep them in the basic-rate
+      band instead of tipping into higher-rate. The cascading saving is often larger than the headline one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  03 — HOW IT WORKS                                                 -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s03">
+  <div class="wrap">
+    <span class="label">03 — How It Works</span>
+    <h2>One legal route. <em>One money flow.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The product is built around a single legal structure: the donor gifts crypto to Sats for Good Foundation,
+      a UK-registered charity (CIO). The Foundation receives the asset, immediately converts it via a licensed
+      over-the-counter (OTC) partner, and disburses the GBP proceeds as a charitable grant to any of approximately 170,000
+      UK-registered charities the donor nominates. The donor pays no CGT on the gift. The receiving charity
+      never learns the donor's identity.
+    </p>
+
+    <h3 style="margin-top: 48px;">The donor flow</h3>
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="card card-sm">
+        <h4 style="color: var(--gold);">Step 1</h4>
+        <p><strong>Pick a charity.</strong> Any UK-registered charity on the Charity Commission register. No
+        bilateral agreement required — the Foundation can grant to any of them as part of its charitable
+        objects.</p>
+      </div>
+      <div class="card card-sm">
+        <h4 style="color: var(--gold);">Step 2</h4>
+        <p><strong>Enter an amount.</strong> In crypto or GBP equivalent. The donor sees the full market value
+        that will form the basis of their tax receipt, and the net grant the charity will receive after platform
+        fee.</p>
+      </div>
+      <div class="card card-sm">
+        <h4 style="color: var(--gold);">Step 3</h4>
+        <p><strong>Verify identity.</strong> Single KYC flow via our licensed partner. Required once per donor
+        for AML compliance on the crypto-to-fiat leg.</p>
+      </div>
+      <div class="card card-sm">
+        <h4 style="color: var(--gold);">Step 4</h4>
+        <p><strong>Send crypto.</strong> Donor is given a unique, single-use deposit address generated by the
+        OTC partner on the Foundation's behalf. Address is never reused — privacy by design; quantum ready.</p>
+      </div>
+      <div class="card card-sm">
+        <h4 style="color: var(--gold);">Step 5</h4>
+        <p><strong>Automated conversion.</strong> OTC partner auto-converts to GBP at spot market rate, settles
+        to the Foundation's bank account within seconds of blockchain confirmation.</p>
+      </div>
+      <div class="card card-sm">
+        <h4 style="color: var(--gold);">Step 6</h4>
+        <p><strong>Automated grant.</strong> Foundation's banking rail auto-initiates an FPS payout to the
+        chosen charity within seconds of receipt. Total touch time for Foundation: under 60 seconds.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">The money flow</h3>
+    <p class="column">
+      The architecture is a narrow pipe, not a pool. Crypto never enters our possession — the OTC partner
+      holds keys throughout. GBP sits in the Foundation's bank account for seconds, not hours. The Foundation
+      is the legal recipient of the crypto gift (for s.257 purposes) but holds no operational balance.
+    </p>
+
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Who holds it</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Donor → OTC address</strong></td>
+          <td>OTC partner (BCB / Archax), on behalf of Foundation</td>
+          <td class="num">Until blockchain confirmation (10–30 min)</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto → GBP conversion</strong></td>
+          <td>OTC partner</td>
+          <td class="num">Seconds</td>
+        </tr>
+        <tr>
+          <td><strong>GBP → Foundation bank</strong></td>
+          <td>Foundation</td>
+          <td class="num">&lt; 60 seconds before automated onward payout</td>
+        </tr>
+        <tr>
+          <td><strong>GBP → receiving charity (FPS)</strong></td>
+          <td>Receiving charity</td>
+          <td class="num">1–2 seconds (FPS)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top: 32px;">
+      <p><strong>On privacy.</strong> The receiving charity never learns who the donor is. From their
+      perspective, they received a standard charitable grant from Sats for Good Foundation. The donor's
+      identity is held by the Foundation and the licensed OTC partner (both AML-compliant, both under
+      confidentiality obligation). It is not shared with any receiving charity.</p>
+      <p><strong>On the receipt.</strong> The donor receives a tax receipt showing the full market value of
+      the gift at the moment of confirmation, with the blockchain transaction hash for verification. This is
+      their evidence for self-assessment — yours to keep, or produce if questioned on tax relief.</p>
+    </div>
+
+    <h3 style="margin-top: 56px;">A worked example</h3>
+    <div class="insight" style="margin-top: 20px;">
+      <h4>Scenario</h4>
+      <p style="margin-bottom: 16px;">A higher-rate taxpayer has realised £15,000 of gains this year on other
+      disposals (shares, ETF rebalancing). They want to donate £8,000 of BTC held from 2019, cost basis £2,000,
+      so a £6,000 gain.</p>
+      <p style="margin-bottom: 16px;"><strong>Without us</strong> (sell BTC, donate the cash): total gains =
+      £21,000 → less £3,000 annual exempt amount → £18,000 taxable × 24% = <strong>£4,320 CGT</strong>. The
+      charity receives £8,000.</p>
+      <p style="margin-bottom: 16px;"><strong>With us</strong> (gift BTC under s.257): the gift is a no-gain,
+      no-loss disposal. It does not enter the donor's chargeable-gains calculation at all. Total gains =
+      £15,000 → less £3,000 → £12,000 taxable × 24% = <strong>£2,880 CGT</strong>. The charity receives
+      £7,680 (£8,000 minus our 4% platform fee).</p>
+      <p style="margin: 0;"><strong>Donor saves £1,440 in tax. Charity receives £320 less.</strong> The tax
+      saving that would have gone to HMRC stays with the donor.</p>
+    </div>
+
+    <h3 style="margin-top: 56px;">Multi-asset scope</h3>
+    <p class="column">
+      The core product accepts Bitcoin, Ethereum, and other appreciating cryptoassets where the tax case is
+      clearest. Stablecoins (USDC, USDT, DAI) are permitted as a convenience top-up alongside a primary gift —
+      acknowledged in the UX, not part of the headline story. The CGT saving is null on stables by definition.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  04 — MARKET & OPPORTUNITY                                         -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s04">
+  <div class="wrap">
+    <span class="label">04 — Market &amp; Opportunity</span>
+    <h2>A niche that is <em>already sizeable.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The UK HNW crypto-hodling cohort is small but dense, and the overlap with existing charitable intent is
+      higher than in the retail crypto population. What follows is a conservative construction based on
+      Coinbase UK registration data, HMRC crypto-disposal aggregate reporting, and the Charities Aid Foundation (CAF) UK Giving Report.
+    </p>
+
+    <h3 style="margin-top: 40px;">TAM → SAM → SOM (UK, base case)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Population</th>
+          <th>Avg giving</th>
+          <th class="num">Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>TAM</strong><br><span style="color: var(--muted); font-size: 13px;">UK HNW crypto hodlers with charitable intent</span></td>
+          <td class="num">150k–200k</td>
+          <td class="num">£8k–£15k/yr</td>
+          <td class="num"><strong>£1.5–4bn/yr</strong></td>
+        </tr>
+        <tr>
+          <td><strong>SAM</strong><br><span style="color: var(--muted); font-size: 13px;">With meaningfully appreciated positions</span></td>
+          <td class="num">30k–50k</td>
+          <td class="num">~£10k/yr</td>
+          <td class="num"><strong>£300–500m/yr</strong></td>
+        </tr>
+        <tr>
+          <td><strong>SOM — Year 5</strong><br><span style="color: var(--muted); font-size: 13px;">Realistic capture, UK-only</span></td>
+          <td class="num">3k–5k</td>
+          <td class="num">£10k–£12k</td>
+          <td class="num"><strong>£30–60m/yr</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 56px;">Donor segments within the SAM</h3>
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="card">
+        <h3>HNW hodlers with gain-heavy positions</h3>
+        <p>The core segment. Bought BTC/ETH between 2015–2020, sitting on substantial unrealised gains. Annual
+        charitable giving is already £5–20k. Primary motivation: tax efficiency + ease.</p>
+      </div>
+      <div class="card">
+        <h3>Religiously-motivated givers</h3>
+        <p>UK Muslim community with crypto holdings paying annual zakat (~£300–500m market, ~40% HNW overlap);
+        UK Christian donors with an ongoing-giving practice. Primary motivation: obligation fulfilled cleanly,
+        anonymity preserved.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy-first HNW donors</h3>
+        <p>Donors — crypto-native or otherwise — who give meaningfully but decline to have their identity
+        visible to the receiving charity. Under-served by every existing UK platform.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">Revenue projections — UK only</h3>
+    <p class="column">Three scenarios, Year 1 / Year 3 / Year 5. Fee assumption: 3.5% blended (tiered structure, 4% / 3% / 2%,
+    in Section 05).</p>
+
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="scenario bear">
+        <div class="scenario-label">Bear</div>
+        <div class="scenario-row"><span>Y1 volume</span><span>£500k</span></div>
+        <div class="scenario-row"><span>Y3 volume</span><span>£4m</span></div>
+        <div class="scenario-row"><span>Y5 volume</span><span>£12m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£500k</span></div>
+      </div>
+      <div class="scenario base">
+        <div class="scenario-label">Base</div>
+        <div class="scenario-row"><span>Y1 volume</span><span>£2m</span></div>
+        <div class="scenario-row"><span>Y3 volume</span><span>£12m</span></div>
+        <div class="scenario-row"><span>Y5 volume</span><span>£35m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£1.5m</span></div>
+      </div>
+      <div class="scenario bull">
+        <div class="scenario-label">Bull</div>
+        <div class="scenario-row"><span>Y1 volume</span><span>£4m</span></div>
+        <div class="scenario-row"><span>Y3 volume</span><span>£25m</span></div>
+        <div class="scenario-row"><span>Y5 volume</span><span>£70m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£3m</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">Revenue projections — UK + phased geographies</h3>
+    <p class="column">Canada added Y2, UAE Y3, Singapore Y4, Australia + US Y5. Each market carries its own
+    value proposition (detailed in Section 11).</p>
+
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="scenario bear">
+        <div class="scenario-label">Bear · 6 markets</div>
+        <div class="scenario-row"><span>Y1 volume</span><span>£500k</span></div>
+        <div class="scenario-row"><span>Y3 volume</span><span>£12m</span></div>
+        <div class="scenario-row"><span>Y5 volume</span><span>£50m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£2m</span></div>
+      </div>
+      <div class="scenario base">
+        <div class="scenario-label">Base · 6 markets</div>
+        <div class="scenario-row"><span>Y1 volume</span><span>£2m</span></div>
+        <div class="scenario-row"><span>Y3 volume</span><span>£35m</span></div>
+        <div class="scenario-row"><span>Y5 volume</span><span>£180m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£8m</span></div>
+      </div>
+      <div class="scenario bull">
+        <div class="scenario-label">Bull · 6 markets</div>
+        <div class="scenario-row"><span>Y1 volume</span><span>£4m</span></div>
+        <div class="scenario-row"><span>Y3 volume</span><span>£80m</span></div>
+        <div class="scenario-row"><span>Y5 volume</span><span>£450m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£17.5m</span></div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-top: 44px;">
+      <div class="stat">
+        <div class="stat-value">£180<em>m</em></div>
+        <div class="stat-label">Base Y5 volume</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">£8<em>m</em></div>
+        <div class="stat-label">Base Y5 revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Markets by 2030</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">55<em>%</em></div>
+        <div class="stat-label">Base Y5 EBITDA margin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  05 — REVENUE STACK                                                -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s05">
+  <div class="wrap">
+    <span class="label">05 — Revenue Stack</span>
+    <h2>Multiple streams. <em>One transaction.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The core fee is the biggest stream, but the platform is designed so that each donation accretes revenue
+      through adjacent layers — API licensing, SaaS subscriptions, enterprise contracts, float income. The
+      whole stack compounds with volume.
+    </p>
+
+    <h3 style="margin-top: 40px;">Tiered platform fee (the core)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Donation size</th>
+          <th>Fee</th>
+          <th>Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">£0 – £10,000</td>
+          <td class="num"><strong>4%</strong></td>
+          <td>Covers KYC, OTC spread, banking rails, operations. Defensible as first-mover premium: no UK entity offers s.257-routed, privacy-by-default crypto gifting today.</td>
+        </tr>
+        <tr>
+          <td class="num">£10,000 – £100,000</td>
+          <td class="num"><strong>3%</strong></td>
+          <td>Core HNW segment. Fixed costs amortise; margin improves.</td>
+        </tr>
+        <tr>
+          <td class="num">£100,000+</td>
+          <td class="num"><strong>2%</strong></td>
+          <td>Institutional tier. Never prices out large gifts; meaningful £ on absolute basis.</td>
+        </tr>
+        <tr>
+          <td><strong>Blended average</strong></td>
+          <td class="num"><strong>~3.5%</strong></td>
+          <td>Assumes the volume mix stays weighted toward mid-tier gifts.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 56px;">Adjacent revenue layers</h3>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="card">
+        <h3>API licensing</h3>
+        <p>"Donate instead of sell" buttons embedded in Koinly, Divly, and Accointing at the tax-loss
+        harvesting moment. Wallet integrations (Ledger Live, Trezor Suite). Exchange integrations (CoinCorner,
+        Bitpanda UK). Per-transaction fees + revenue share.</p>
+      </div>
+      <div class="card">
+        <h3>SaaS — white-label DAF</h3>
+        <p>Charities, religious organisations, and cause-specific bodies launch their own branded crypto
+        donation page on our rails. Monthly SaaS £500–£5,000 + transaction fee.</p>
+      </div>
+      <div class="card">
+        <h3>Enterprise contracts</h3>
+        <p>Corporate treasuries (crypto-native companies, ESG-led firms) donate appreciated crypto to offset
+        corporate gains. Multi-year contracts at £10–50k/year plus transaction fee.</p>
+      </div>
+      <div class="card">
+        <h3>Float income</h3>
+        <p>Transit GBP balances across Foundation accounts earn interest. Small per-transaction but scales
+        meaningfully at £100m+ annual volume.</p>
+      </div>
+      <div class="card">
+        <h3>Anonymity premium (Y3+)</h3>
+        <p>A premium donor tier offering additional structuring — multi-year planned giving, bequest
+        integration, impact reporting — positioned around the privacy differentiator. Subscription-based.</p>
+      </div>
+      <div class="card">
+        <h3>Data licensing (Y4+)</h3>
+        <p>Anonymised trend data sold to philanthropy researchers, the Charity Commission, Charities Aid
+        Foundation. Small but high-margin.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 44px;">
+      <p><strong>Revenue structure, not revenue promise.</strong> The stack is designed so that adjacent
+      streams add ~30% to core fee revenue by Year 3, rising to ~40% by Year 5. Full cost structure and
+      profitability modelling is in Appendix A.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  06 — COMPETITIVE LANDSCAPE                                        -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s06">
+  <div class="wrap">
+    <span class="label">06 — Competitive Landscape</span>
+    <h2>No UK-native <em>s.257 DAF for crypto.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The crypto-philanthropy category is growing, but no UK player offers direct-grant crypto gifting routed
+      through the s.257 CGT-relief structure with privacy by default. Existing competitors fall into three
+      shapes: US-originated crypto DAFs that don't speak UK tax law fluently and expose donor identity to the
+      receiving charity; UK-originated cash platforms with no crypto rail; and one emerging UK crypto player
+      (Evergive) running a perpetual-yield / endowment model rather than direct-grant. The wedge is the
+      combination: UK-native + s.257 direct-grant + privacy-by-default + any charity.
+    </p>
+
+    <table style="margin-top: 32px;">
+      <thead>
+        <tr>
+          <th>Competitor</th>
+          <th>Origin</th>
+          <th>Entity</th>
+          <th>Product model</th>
+          <th>Where we differ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>The Giving Block</strong></td>
+          <td>US (Shift4)</td>
+          <td>For-profit (Shift4 subsidiary)</td>
+          <td>Per-charity accounts; donor→charity direct</td>
+          <td>No s.257 structure, donor ID exposed to charity, UK tax handling weak</td>
+        </tr>
+        <tr>
+          <td><strong>Engiven</strong></td>
+          <td>US</td>
+          <td>For-profit SaaS</td>
+          <td>DAF-adjacent, US 501(c)(3)-focused</td>
+          <td>Not structured for UK charity law; no UK banking rail</td>
+        </tr>
+        <tr>
+          <td><strong>Endaoment</strong></td>
+          <td>US</td>
+          <td>Public charity (501(c)(3))</td>
+          <td>Crypto-native public charity / DAF</td>
+          <td>US-only. Their pattern is our inspiration; UK-native execution is the wedge</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto for Charity</strong></td>
+          <td>US (Fidelity Charitable)</td>
+          <td>Charity programme (DAF under Fidelity Charitable)</td>
+          <td>Umbrella DAF via Fidelity</td>
+          <td>US only; Fidelity-branded; no UK route</td>
+        </tr>
+        <tr>
+          <td><strong>Evergive</strong></td>
+          <td>UK</td>
+          <td>For-profit Ltd + independent DAF partner (hybrid)</td>
+          <td>Perpetual-yield model: donation invested (in BTC), monthly yield granted to chosen charities</td>
+          <td>Different product: endowment/yield, not direct grant. Bitcoin-only. No s.257 direct-grant routing surfaced. Principal never reaches the charity — only the yield</td>
+        </tr>
+        <tr>
+          <td><strong>Charities Aid Foundation (CAF)</strong></td>
+          <td>UK</td>
+          <td>Charity + subsidiary bank (hybrid)</td>
+          <td>Long-standing charity + bank + DAF</td>
+          <td>Institutional, slow crypto adoption, donor ID visible, not positioned for HNW crypto</td>
+        </tr>
+        <tr>
+          <td><strong>Stewardship</strong></td>
+          <td>UK</td>
+          <td>Registered UK charity</td>
+          <td>Christian-coded DAF</td>
+          <td>Narrow audience fit; no crypto rail</td>
+        </tr>
+        <tr>
+          <td><strong>JustGiving</strong></td>
+          <td>UK</td>
+          <td>For-profit (Blackbaud subsidiary)</td>
+          <td>Retail cash donation incumbent</td>
+          <td>No crypto; full donor ID exposure; no s.257 positioning</td>
+        </tr>
+        <tr>
+          <td><strong>GoFundMe</strong></td>
+          <td>US / UK</td>
+          <td>For-profit</td>
+          <td>Peer-to-peer crowdfunding; charity arm</td>
+          <td>No crypto; personal-cause first, not charity-first; full donor ID exposure</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 56px;">What they charge</h3>
+    <p class="column" style="margin-top: 14px;">
+      Platform fees vary wildly by model — some charge the donor, some the charity, some use "optional tip"
+      mechanics, some layer DAF admin fees on top. Headline fees below; card-processing fees apply on top
+      for most cash platforms.
+    </p>
+
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Entity</th>
+          <th>Crypto</th>
+          <th>Platform fee</th>
+          <th class="num">Effective to charity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>The Giving Block</strong></td>
+          <td>For-profit (Shift4 sub)</td>
+          <td>✓</td>
+          <td>~2.5% transaction fee on crypto donations</td>
+          <td class="num">~97.5%</td>
+        </tr>
+        <tr>
+          <td><strong>Engiven</strong></td>
+          <td>For-profit SaaS</td>
+          <td>✓</td>
+          <td>~3% donor fee; enterprise tier flat-rate</td>
+          <td class="num">~97%</td>
+        </tr>
+        <tr>
+          <td><strong>Endaoment</strong></td>
+          <td>Public charity (501(c)(3))</td>
+          <td>✓</td>
+          <td>0% on entry, ~1% annual DAF admin</td>
+          <td class="num">~99% + time drag</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto for Charity</strong></td>
+          <td>Charity programme (Fidelity Charitable DAF)</td>
+          <td>✓</td>
+          <td>~0.6% annual DAF admin + Fidelity fund fees</td>
+          <td class="num">~99% + time drag</td>
+        </tr>
+        <tr>
+          <td><strong>Evergive</strong></td>
+          <td>For-profit Ltd + DAF partner (hybrid)</td>
+          <td>✓ (BTC only)</td>
+          <td>0% stated platform fee (DAF admin on backend; optional donor tip; optional card-fee cover)</td>
+          <td class="num">Yield only — principal retained in perpetuity</td>
+        </tr>
+        <tr>
+          <td><strong>Charities Aid Foundation (CAF)</strong></td>
+          <td>Charity + subsidiary bank (hybrid)</td>
+          <td>—</td>
+          <td>~4% on one-off Charity Account donations; 0% on standing orders</td>
+          <td class="num">~96%</td>
+        </tr>
+        <tr>
+          <td><strong>Stewardship</strong></td>
+          <td>Registered UK charity</td>
+          <td>—</td>
+          <td>~4% on DAF contributions, reducing at scale</td>
+          <td class="num">~96%</td>
+        </tr>
+        <tr>
+          <td><strong>JustGiving</strong></td>
+          <td>For-profit (Blackbaud sub)</td>
+          <td>—</td>
+          <td>0% platform fee on fundraising pages + 1.9% + £0.20 card fee; charities on a £39/mo subscription plan</td>
+          <td class="num">~96–98%</td>
+        </tr>
+        <tr>
+          <td><strong>GoFundMe (UK)</strong></td>
+          <td>For-profit</td>
+          <td>—</td>
+          <td>0% platform fee + 1.9% + £0.20 transaction fee; optional donor tip</td>
+          <td class="num">~96–98%</td>
+        </tr>
+        <tr style="background: var(--gold-soft);">
+          <td><strong>Bitcoin for Good</strong></td>
+          <td>UK CIO + UK OpCo + SG HoldCo (hybrid)</td>
+          <td>✓</td>
+          <td><strong>4% ≤£10k · 3% £10k–£100k · 2% &gt;£100k</strong> (blended ~3.5%); no card fees</td>
+          <td class="num"><strong>~96.5%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 12px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      Fees as of mid-2025; verify before use in any donor-facing materials. "Effective to charity" assumes a
+      single £10,000 gift on each platform's most common donor path; real outcomes vary with payment method,
+      subscription tier, and whether the platform routes through a DAF.
+    </p>
+
+    <div class="insight" style="margin-top: 32px;">
+      <h4>The shape of the gap</h4>
+      <p>A UK-native crypto donor-advised fund that (i) leads with the s.257 tax structure, (ii) treats
+      donor privacy as a structural default rather than a setting, and (iii) is charity-agnostic (grants to
+      any of ~170k UK-registered charities without per-charity onboarding) does not exist today. That
+      three-pillar combination is the positioning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  07 — WHY US / MOAT                                                 -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s07">
+  <div class="wrap">
+    <span class="label">07 — Why Us · The Moat</span>
+    <h2>Twelve to eighteen months of <em>regulatory head-start.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The defensibility here is not technological. The plumbing is buildable by any competent team in three
+      months. The defensibility is in the regulatory, banking, and charity-law stack — pieces that take real
+      calendar time and real reputation to assemble, particularly in a tightening UK crypto regulatory climate.
+    </p>
+
+    <div class="moat-list" style="margin-top: 28px;">
+      <div class="moat-item">
+        <div class="moat-num">i.</div>
+        <div>
+          <h3>Written s.257 tax-counsel opinion</h3>
+          <p>Commissioned from RPC or Carter Backer Winter before launch. Scope deliberately narrow (s.257 applied
+          to OTC-mediated crypto gift; Ltd–Foundation services agreement arm's-length test; GAAR exposure),
+          commissioned on a fixed fee after free scoping calls with 2–3 firms. Becomes the defensible legal basis
+          that no US competitor holds. 2–3 months to procure; £10–15k.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">ii.</div>
+        <div>
+          <h3>Charity Commission CIO registration</h3>
+          <p>Sats for Good Foundation, approved with a clear cryptoasset-receiving charitable objects clause.
+          Charity Commission pre-registration engagement (free) precedes the formal application so the novel
+          objects clause and Ltd–Foundation services model surface to the Commission early. 3–6 months of review.
+          No shortcut; competitors must wait the same.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">iii.</div>
+        <div>
+          <h3>UK banking for a crypto-adjacent charity</h3>
+          <p>Banking partners willing to serve a crypto-adjacent registered charity — Modulr, ClearBank, and
+          Charities Aid Foundation (CAF) Bank — are the real bar in a de-risking climate. 6–12 months of relationship-building, and
+          difficult to replicate without prior institutional credibility.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">iv.</div>
+        <div>
+          <h3>FCA financial-promotion approver</h3>
+          <p>Either via a licensed OTC's permissions or an independent approver (s.21 FSMA). Non-trivial to
+          arrange for a new entity without a track record.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">v.</div>
+        <div>
+          <h3>Charity disbursement rail</h3>
+          <p>Charities Aid Foundation (CAF) Donate access (~170k UK charities with verified bank details) licensed as a B2B service. Plus
+          our own onboarded hot-list of top 500 charities. Competitors must build or license the equivalent.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">vi.</div>
+        <div>
+          <h3>Founder distribution</h3>
+          <p>Access to UK Bitcoin, HNW, and religious-giving communities through founder network. Relational,
+          not technical — but genuinely hard to replicate cold. First 500 donors come from here.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 36px;">
+      <p><strong>Net replication cost for a competitor entering UK from scratch:</strong> 12–18 months and
+      £300k+ of setup before first donation. We intend to compound this lead across geographies — each
+      expansion market has its own local moat (see Section 11).</p>
+    </div>
+
+    <div class="insight">
+      <h4>A secondary moat: privacy as architecture</h4>
+      <p>Because the Foundation is the legal recipient of the crypto gift, and because the grant to the end
+      charity is a standard charity-to-charity disbursement, donor identity never leaves us by structural
+      necessity. Competitors who built on the per-charity-account pattern (The Giving Block) cannot retrofit
+      this. It is not a setting; it is a property of the structure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  08 — PARTNERS & INFRASTRUCTURE                                    -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s08">
+  <div class="wrap">
+    <span class="label">08 — Partners &amp; Infrastructure</span>
+    <h2>The stack behind <em>every conversion.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      All candidates named below. None are signed at time of writing. The architecture is deliberately modular
+      so that each layer can be swapped without rebuilding the whole.
+    </p>
+
+    <h3 style="margin-top: 40px;">Crypto-to-fiat conversion (OTC)</h3>
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="card">
+        <h3>BCB Group</h3>
+        <p>UK-licensed OTC with MLR registration. Institutional liquidity. Programmable custody API. First
+        candidate.</p>
+      </div>
+      <div class="card">
+        <h3>Archax</h3>
+        <p>UK FCA-authorised digital-asset exchange. More regulatory depth, newer to philanthropy-adjacent
+        flows. Second candidate.</p>
+      </div>
+      <div class="card">
+        <h3>CoinPass</h3>
+        <p>UK-specialist crypto broker. Smaller scale; useful as backup or for lower-volume tail.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 48px;">Banking rails</h3>
+    <p class="column" style="margin-top: 8px; margin-bottom: 16px; font-size: 15px;">
+      The Foundation needs a UK-regulated operational account willing to accept inbound OTC-settled GBP and
+      initiate high-volume Faster Payments to charities. Six candidates, two primary tracks — EMI-first
+      (speed, programmability) or charity-native (reputation, sector fit). Multiple relationships in parallel
+      for resilience against de-risking.
+    </p>
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Modulr <span class="badge badge-gold" style="margin-left: 6px;">Primary</span></h3>
+        <p>Regulated EMI with programmable payment rails and FPS access. Charity-friendly. Default candidate
+        for the Foundation's operational account.</p>
+      </div>
+      <div class="card">
+        <h3>ClearBank</h3>
+        <p>UK clearing bank, crypto-aware, direct Bank of England settlement access. Higher bar to onboard;
+        worth it for settlement reliability.</p>
+      </div>
+      <div class="card">
+        <h3>Charities Aid Foundation (CAF) Bank</h3>
+        <p>Charity-native banking (a separate entity from Charities Aid Foundation (CAF)'s DAF arm). Natural
+        fit for a CIO; reputation-positive.</p>
+      </div>
+      <div class="card">
+        <h3>Unity Trust Bank</h3>
+        <p>UK bank specialising in the charity, social enterprise and third sector. Strong cultural fit for a
+        CIO; limited crypto-flow precedent — needs a relationship conversation up front.</p>
+      </div>
+      <div class="card">
+        <h3>Triodos Bank UK</h3>
+        <p>Ethical, sustainability-mandated UK bank with a substantial charity client base. Slower onboarding;
+        useful as a second charity-native rail once the flow is proven.</p>
+      </div>
+      <div class="card">
+        <h3>Starling Bank Business</h3>
+        <p>UK digital bank with a full banking licence. More crypto-tolerant than the high-street incumbents;
+        API-first. Backup rail for smaller-value outbound flows.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 48px;">Compliance &amp; identity</h3>
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Sumsub / Onfido <span class="badge badge-muted" style="margin-left: 8px;">KYC</span></h3>
+        <p>Either as KYC vendor for donor onboarding. Shared with OTC partner so donors complete one flow.
+        Sumsub preferred for crypto-specialism.</p>
+      </div>
+      <div class="card">
+        <h3>Charities Aid Foundation (CAF) Donate <span class="badge badge-muted" style="margin-left: 8px;">Disbursement</span></h3>
+        <p>Licensed as commercial B2B service (separate from any DAF umbrella relationship). Gives us instant
+        payout to ~170k UK-registered charities.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 48px;">Legal &amp; tax</h3>
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Stone King · Bates Wells</h3>
+        <p>Specialist UK charity-law firms. One of these instructs the CIO incorporation and the
+        Ltd–Foundation services agreement.</p>
+      </div>
+      <div class="card">
+        <h3>Kingsley Napley · Mishcon de Reya</h3>
+        <p>Crypto-regulation counsel for FCA and promotion-compliance work. Either is strong.</p>
+      </div>
+      <div class="card">
+        <h3>RPC · Carter Backer Winter · KPMG Tax</h3>
+        <p>Written tax-counsel opinion on the s.257 / DAF structure. Non-optional deliverable before launch.</p>
+      </div>
+      <div class="card">
+        <h3>Open Banking partners <span class="badge badge-muted" style="margin-left: 8px;">Retries</span></h3>
+        <p>Confirmation of Payee API (Modulr, ClearBank) for pre-payout bank-detail validation. Catches ~95%
+        of stale charity-bank-detail errors before money moves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  09 — REGULATORY & THREATS                                          -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s09">
+  <div class="wrap">
+    <span class="label">09 — Regulatory Structure &amp; Threats</span>
+    <h2>Clean at launch. <em>Designed for a tighter 2028 regime.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The regulatory model at launch is structurally conservative — we never operate as a crypto exchange,
+      never hold keys, never touch client crypto. The licensed OTC partner carries the MLR-registered
+      activity. The Foundation's role (legal recipient of a charitable gift; grant-maker to UK charities) is
+      activity the Charity Commission has regulated for centuries.
+    </p>
+
+    <h3 style="margin-top: 40px;">The regulatory stack at launch</h3>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="card">
+        <h3>Introducer model <span class="badge badge-moss" style="margin-left: 8px;">Clean</span></h3>
+        <p>Licensed OTC partner handles all crypto-to-fiat exchange. Foundation is the legal recipient of the
+        gift but does not exchange crypto as principal. No MLR registration required on our side.</p>
+      </div>
+      <div class="card">
+        <h3>CIO registration <span class="badge badge-gold" style="margin-left: 8px;">In progress</span></h3>
+        <p>Charitable Incorporated Organisation via Charity Commission. 3–6 month approval. Umbrella DAF
+        (Prism the Gift Fund, NPT UK) identified as fallback if timeline slips.</p>
+      </div>
+      <div class="card">
+        <h3>Financial promotions <span class="badge badge-moss" style="margin-left: 8px;">Approver engaged</span></h3>
+        <p>s.21 FSMA approval routed via the licensed OTC's permissions or an independent s.21 approver.
+        Active compliance review for every donor-facing surface.</p>
+      </div>
+      <div class="card">
+        <h3>s.257 TCGA 1992 <span class="badge badge-gold" style="margin-left: 8px;">Opinion pending</span></h3>
+        <p>Written tax-counsel opinion commissioned. The opinion becomes the durable, defensible basis for
+        the platform's core tax claim.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">The structure isn't novel — it's the default for big giving</h3>
+    <p class="column">
+      The commercial-entity + charity-entity pairing is well-trodden ground. The largest DAF in the world, the
+      UK's largest charity-services provider, and household-name trading charities all operate variants of this
+      pattern. The pattern is Charity Commission-friendly, HMRC-neutral, and investor-familiar.
+    </p>
+
+    <table style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th>Organisation</th>
+          <th>Charity arm</th>
+          <th>Commercial / trading arm</th>
+          <th>Mechanic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Fidelity Charitable</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td>Fidelity Charitable (501(c)(3) public charity — the largest DAF in the world, ~$50bn AUM)</td>
+          <td>Fidelity Investments (for-profit asset manager)</td>
+          <td>Commercial entity provides platform, investment, and admin services to charity under an arm's-length services agreement; charity pays fees.</td>
+        </tr>
+        <tr>
+          <td><strong>Schwab Charitable</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td>Schwab Charitable (independent 501(c)(3) DAF)</td>
+          <td>Charles Schwab &amp; Co. (for-profit broker-dealer)</td>
+          <td>Identical pattern to Fidelity. Independent board; Schwab provides platform services on contract.</td>
+        </tr>
+        <tr>
+          <td><strong>Vanguard Charitable</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td>Vanguard Charitable (501(c)(3) DAF)</td>
+          <td>Vanguard Group (for-profit asset manager)</td>
+          <td>Vanguard Group administers investments for the charity; service-fee structure; separate boards.</td>
+        </tr>
+        <tr>
+          <td><strong>Charities Aid Foundation (CAF)</strong> <span style="color: var(--muted); font-size: 12px;">UK</span></td>
+          <td>Charities Aid Foundation (CAF) — registered UK charity, oldest UK DAF sponsor</td>
+          <td>CAF Bank Ltd (for-profit subsidiary bank) and CAF-branded commercial services</td>
+          <td>Charity owns/contracts with the commercial bank; profits flow back to the charity. Established UK precedent of the pattern.</td>
+        </tr>
+        <tr>
+          <td><strong>National Trust</strong> <span style="color: var(--muted); font-size: 12px;">UK</span></td>
+          <td>The National Trust (registered UK charity)</td>
+          <td>National Trust (Enterprises) Ltd — trading subsidiary</td>
+          <td>Trading subsidiary runs shops, cafés, holiday cottages; gift-aids 100% of profits back to the charity. Classic UK trading-subsidiary pattern.</td>
+        </tr>
+        <tr>
+          <td><strong>Cancer Research UK</strong> <span style="color: var(--muted); font-size: 12px;">UK</span></td>
+          <td>Cancer Research UK (registered UK charity)</td>
+          <td>Cancer Research UK Trading Ltd — subsidiary</td>
+          <td>Subsidiary handles commercial activities (merchandise, sponsorships); gift-aids profits to parent charity.</td>
+        </tr>
+        <tr>
+          <td><strong>Mozilla</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td>Mozilla Foundation (501(c)(3) non-profit)</td>
+          <td>Mozilla Corporation (wholly-owned taxable subsidiary — builds Firefox)</td>
+          <td>Foundation owns Corporation; Corporation's profits ultimately benefit the Foundation's mission. Tech-sector precedent of the pattern.</td>
+        </tr>
+        <tr>
+          <td><strong>Newman's Own</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td>Newman's Own Foundation (501(c)(3))</td>
+          <td>Newman's Own Inc. (food company)</td>
+          <td>Foundation owns the for-profit food company outright; 100% of company profits donated to the Foundation annually. Pattern codified by federal law in 2018 for private-foundation business holdings.</td>
+        </tr>
+        <tr style="background: var(--gold-soft);">
+          <td><strong>Bitcoin for Good</strong></td>
+          <td>Sats for Good Foundation (UK CIO)</td>
+          <td>Sats for Good Ltd (UK OpCo), wholly-owned subsidiary of Sats for Good Pte Ltd (Singapore HoldCo)</td>
+          <td>UK OpCo licenses platform + services to Foundation under an arm's-length services agreement at HMRC-compliant transfer pricing. See corporate structure below for the full spine.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 12px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      The structural variants differ (parent-subsidiary, sibling-services, wholly-owned taxable), but the
+      underlying pattern — a charity + a commercial entity cooperating under documented terms — is the default
+      for large-scale giving infrastructure, both sides of the Atlantic.
+    </p>
+
+    <h3 style="margin-top: 64px;">Corporate structure — UK front, Singapore spine</h3>
+    <p class="column" style="margin-top: 16px;">
+      The commercial spine behind the UK-facing charity brand is a four-entity setup: a UK operating company,
+      a UK CIO, a Singapore holding company, and a Singapore founder-advisory company. UK donors see a UK
+      charity and a UK platform — nothing else. Profit, intellectual property, and founder extraction happen
+      offshore, within clearly documented arm's-length arrangements.
+    </p>
+    <p class="column">
+      This is the pattern Shopify, Stripe, Wise, and Revolut all use in variants (UK-front-office + offshore-IP-holding);
+      it is structurally conservative and investor-familiar. The founder is a Singapore citizen and Singapore
+      tax resident, which turns the most common weakness of an offshore holding company — economic substance
+      — into a settled fact from day one.
+    </p>
+
+    <table style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th>Entity</th>
+          <th>Jurisdiction</th>
+          <th>Ownership</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sats for Good Pte Ltd</strong> <span style="color: var(--muted); font-size: 12px;">HoldCo</span></td>
+          <td>Singapore</td>
+          <td>Founder-owned</td>
+          <td>Owns the IP, brand, platform code. Holds 100% of the UK OpCo shares. Receives IP-licensing fees and dividends from UK.</td>
+        </tr>
+        <tr>
+          <td><strong>Sats for Good Ltd</strong> <span style="color: var(--muted); font-size: 12px;">UK OpCo</span></td>
+          <td>United Kingdom</td>
+          <td>Wholly-owned subsidiary of SG HoldCo</td>
+          <td>Operates the UK-regulated platform. Holds the FCA s.21 promotions arrangement, banking rails, OTC contract. Contracts with the Foundation for platform services.</td>
+        </tr>
+        <tr>
+          <td><strong>Sats for Good Foundation</strong> <span style="color: var(--muted); font-size: 12px;">UK CIO</span></td>
+          <td>United Kingdom</td>
+          <td>Legally independent — not owned by any other entity in this group</td>
+          <td>Registered UK charity. Legal recipient of every donation under s.257 TCGA 1992. Independently governed by trustees; contracts the UK OpCo on arm's-length terms for services.</td>
+        </tr>
+        <tr>
+          <td><strong>VicariousCore Pte Ltd</strong> <span style="color: var(--muted); font-size: 12px;">ConsultingCo · shared across ventures</span></td>
+          <td>Singapore</td>
+          <td>100% founder-owned; separate from SG HoldCo</td>
+          <td>Invoices SG HoldCo for founder's strategic / advisory services. No employment relationship between the founder and any operating entity — all founder value extracted through this route.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 40px;">Money flow</h3>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="card">
+        <h3>Gift leg — donor to charity</h3>
+        <p style="font-size: 15px;">
+          1. UK donor gifts crypto → <em>Sats for Good Foundation (UK CIO)</em>. Full s.257 relief preserved; the
+          recipient is a UK-registered charity governed by independent trustees.<br><br>
+          2. Foundation pays a tiered platform-services fee (4% / 3% / 2%, blended ~3.5%) to <em>Sats for Good Ltd (UK OpCo)</em>
+          under an arm's-length services agreement. This is the Foundation's only material expense line.<br><br>
+          3. Foundation disburses the balance to the donor-chosen end charity in GBP via Faster Payments.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Profit leg — OpCo to founder</h3>
+        <p style="font-size: 15px;">
+          4. UK OpCo pays UK corporation tax (25%) on net taxable profit. Prior to that, it deducts an
+          arm's-length IP-licensing fee / management charge to <em>SG HoldCo</em>.<br><br>
+          5. UK OpCo dividends post-tax profit to SG HoldCo (0% UK withholding under UK–Singapore double-tax treaty).<br><br>
+          6. SG HoldCo pays consulting/advisory fees to <em>VicariousCore Pte Ltd</em> for the founder's strategic work.
+          SG HoldCo taxed at 17% on its net SG profit (with potential reduction under SG's IP Development Incentive if qualifying).<br><br>
+          7. VicariousCore Pte Ltd pays SG corp tax at 17% on net. Remaining cash dividended to the founder at <strong>0% personal tax</strong>,
+          under Singapore's territorial tax regime for SG-resident individuals.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
+      <p><strong>Founder extraction is through consulting fees — never salary.</strong> No UK or SG operating
+      entity pays the founder a wage. All founder remuneration is structured as fees paid by SG HoldCo to
+      VicariousCore Pte Ltd for genuinely-rendered strategic services, documented with deliverables and
+      retainer terms. This avoids UK employment tax exposure entirely and keeps personal extraction cleanly
+      within the Singapore tax perimeter.</p>
+    </div>
+
+    <h3 style="margin-top: 40px;">Why this works from Year 1 with 100% UK-donor capture</h3>
+    <ul style="margin-top: 14px; padding-left: 20px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-mid);">
+      <li style="margin-bottom: 10px;"><strong>Donor sees only the UK front.</strong> The brand, the website, the charity number, the legal recipient — all UK. The offshore holding layer is invisible to the donor flow.</li>
+      <li style="margin-bottom: 10px;"><strong>s.257 tax relief is preserved.</strong> The legal recipient of every gift is a UK-registered charity with independent trustees. The offshore shareholding of the OpCo is immaterial to the tax treatment of the donation.</li>
+      <li style="margin-bottom: 10px;"><strong>FCA s.21 approval sits with the UK OpCo.</strong> The Singapore entities never communicate with UK donors. All financial promotions flow through the UK-regulated entity, as the FCA regime requires.</li>
+      <li style="margin-bottom: 10px;"><strong>Charity Commission scrutiny focuses on the UK CIO.</strong> That CIO is legally independent, trustee-governed, not owned by any group entity. Its supplier being a subsidiary of a Singapore parent is not structurally unusual — many UK charities contract with offshore-owned service providers.</li>
+    </ul>
+
+    <h3 style="margin-top: 40px;">Three structural constraints — and how each is met</h3>
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="card">
+        <h3>Singapore economic substance <span class="badge badge-moss" style="margin-left: 6px;">Met</span></h3>
+        <p style="font-size: 14px;">Singapore tax authorities and UK CFC rules both require real SG activity for the HoldCo to be respected for tax purposes. The founder is a Singapore citizen and tax resident — making substance immediate, not manufactured. Genuine strategic decision-making sits in Singapore; office and employee footprint scales with the business.</p>
+      </div>
+      <div class="card">
+        <h3>Transfer pricing <span class="badge badge-gold" style="margin-left: 6px;">Documented</span></h3>
+        <p style="font-size: 14px;">Every UK→SG fee (IP licensing, management charge, consulting fee from SG HoldCo to VicariousCore) must be arm's length under OECD BEPS / HMRC rules. A written transfer-pricing study from a Big Four practice (Deloitte SG or EY SG recommended; ~£10–25k initial, annual refresh) fixes the fee basis and documents it for HMRC audit.</p>
+      </div>
+      <div class="card">
+        <h3>Charity independence <span class="badge badge-moss" style="margin-left: 6px;">By design</span></h3>
+        <p style="font-size: 14px;">The UK CIO must be visibly independent of the commercial group for the Charity Commission to be comfortable. At least three unaffiliated trustees, documented arm's-length services agreement with UK OpCo, minuted board decisions — the Commission's standard independence tests, applied properly from day one.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Illustrative tax efficiency</h3>
+    <p class="column" style="margin-top: 14px;">
+      Simplified walk on £100 of distributable profit generated by the UK OpCo — compared across three
+      structural options. Numbers are indicative; real outcomes depend on transfer-pricing split between UK
+      retention and SG migration, which is determined by the TP study.
+    </p>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Structure</th>
+          <th class="num">UK corp tax</th>
+          <th class="num">SG corp tax</th>
+          <th class="num">Personal tax</th>
+          <th class="num">Founder keeps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pure UK + UK salary</td>
+          <td class="num">£25</td>
+          <td class="num">—</td>
+          <td class="num">~£33 (income tax + NI)</td>
+          <td class="num">~£42</td>
+        </tr>
+        <tr>
+          <td>Pure UK + UK dividends</td>
+          <td class="num">£25</td>
+          <td class="num">—</td>
+          <td class="num">~£30 (dividend tax at additional rate)</td>
+          <td class="num">~£45</td>
+        </tr>
+        <tr style="background: var(--gold-soft);">
+          <td><strong>UK OpCo + SG HoldCo + VicariousCore Pte Ltd</strong></td>
+          <td class="num">~£15 (on UK retention portion)</td>
+          <td class="num">~£14 (on SG migration + ConsultingCo)</td>
+          <td class="num"><strong>£0</strong> (SG-resident, dividend extraction)</td>
+          <td class="num"><strong>~£71</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 12px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      The SG line assumes 40% of OpCo profit is legitimately migrated to SG HoldCo via arm's-length IP licensing;
+      the balance stays in the UK and pays UK corp tax. A more conservative TP outcome (20% migration) yields
+      ~£60 retained; an aggressive one (60%+) attracts HMRC challenge and is off-table.
+    </p>
+
+    <h3 style="margin-top: 40px;">Incorporation sequence</h3>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">1</div>
+        <div>
+          <h3 style="margin-bottom: 6px; font-size: 17px;">Incorporate Sats for Good Pte Ltd (SG HoldCo)</h3>
+          <p style="font-size: 14px; margin: 0;">1–2 weeks via a Singapore formation agent. Shareholding issued to founder. Basic SG resident director already in place (founder).</p>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">2</div>
+        <div>
+          <h3 style="margin-bottom: 6px; font-size: 17px;">Incorporate Sats for Good Ltd (UK OpCo)</h3>
+          <p style="font-size: 14px; margin: 0;">Companies House registration; sole shareholder = SG HoldCo from the start. Separate from Foundation setup.</p>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">3</div>
+        <div>
+          <h3 style="margin-bottom: 6px; font-size: 17px;">Incorporate VicariousCore Pte Ltd (SG ConsultingCo)</h3>
+          <p style="font-size: 14px; margin: 0;">Separate Singapore Pte Ltd, 100% founder-owned. Retainer agreement with SG HoldCo for strategic/advisory services. Documented deliverables and rate card.</p>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">4</div>
+        <div>
+          <h3 style="margin-bottom: 6px; font-size: 17px;">Register Sats for Good Foundation (UK CIO)</h3>
+          <p style="font-size: 14px; margin: 0;">Charity Commission application (3–6 months). Stone King or Bates Wells instructs. Trustees appointed. Umbrella DAF as fallback if timeline slips.</p>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">5</div>
+        <div>
+          <h3 style="margin-bottom: 6px; font-size: 17px;">Commission transfer-pricing study</h3>
+          <p style="font-size: 14px; margin: 0;">Deloitte SG or EY SG engagement. Covers UK OpCo → SG HoldCo licensing fee, plus SG HoldCo → VicariousCore consulting fee. Deliverable before first material intercompany invoice. ~£10–25k; annual refresh.</p>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">6</div>
+        <div>
+          <h3 style="margin-bottom: 6px; font-size: 17px;">Services agreements in place</h3>
+          <p style="font-size: 14px; margin: 0;">UK OpCo ↔ UK CIO services agreement (platform + admin fee). UK OpCo ↔ SG HoldCo IP-licensing agreement. SG HoldCo ↔ VicariousCore consulting retainer. All signed before any commercial activity.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">Threats, ranked by probability (5-year horizon)</h3>
+    <p class="column">Political-strategist lens. UK crypto regulation is tightening under a revenue-hungry
+    Treasury and a consumer-protection-leaning FCA. The cumulative direction matters more than any single
+    event. Architecture is designed to survive threats 1–3 by default.</p>
+
+    <table style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Threat</th>
+          <th>Probability</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>FCA extends mandatory authorisation to introducer model</td>
+          <td class="num">60–70%</td>
+          <td><span class="badge badge-gold">Medium</span></td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>UK banking further de-risks crypto-adjacent charities</td>
+          <td class="num">50–60%</td>
+          <td><span class="badge badge-gold">Medium-high</span></td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>HMRC publishes DAF-crypto-specific anti-avoidance guidance</td>
+          <td class="num">30–40%</td>
+          <td><span class="badge badge-gold">Medium</span></td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td>MiCA-style rules harmonised into UK post-Brexit</td>
+          <td class="num">30–40%</td>
+          <td><span class="badge badge-muted">Low-medium</span></td>
+        </tr>
+        <tr>
+          <td class="num">5</td>
+          <td>Charity Commission issues specific crypto-donation guidance</td>
+          <td class="num">20–30%</td>
+          <td><span class="badge badge-muted">Low-medium</span></td>
+        </tr>
+        <tr>
+          <td class="num">6</td>
+          <td>Crypto made a s.431 "qualifying investment" (Income Tax relief)</td>
+          <td class="num">15–20%</td>
+          <td><span class="badge badge-moss">Positive upside</span></td>
+        </tr>
+        <tr>
+          <td class="num">7</td>
+          <td>GAAR invoked on the platform structure</td>
+          <td class="num">5–10%</td>
+          <td><span class="badge badge-claret">High if triggered</span></td>
+        </tr>
+        <tr>
+          <td class="num">8</td>
+          <td>UK abolishes CGT on crypto disposals specifically</td>
+          <td class="num">2–3%</td>
+          <td><span class="badge badge-claret">Erodes core thesis</span></td>
+        </tr>
+        <tr>
+          <td class="num">9</td>
+          <td>s.257 gift relief withdrawn for cryptoassets</td>
+          <td class="num">1–2%</td>
+          <td><span class="badge badge-claret">Catastrophic</span></td>
+        </tr>
+        <tr>
+          <td class="num">10</td>
+          <td>UK abolishes CGT entirely</td>
+          <td class="num">&lt;1%</td>
+          <td><span class="badge badge-claret">Catastrophic</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top: 32px;">
+      <p><strong>Strategic response.</strong> Design for a tighter 2028 regime. Everything we build now should
+      survive threats 1, 2, and 3 as default (they are the plausible, near-term trajectory). Threats 4–6 are
+      manageable or positive. Threats 7–10 are tail risks too remote to drive architecture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  10 — STRATEGIC PRIORITIES                                          -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s10">
+  <div class="wrap">
+    <span class="label">10 — Strategic Priorities</span>
+    <h2>What happens <em>next.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      The real gates — the four pieces of work that must land before the first donation can complete.
+      Company formation, services agreements, charity disbursement licensing, and the public launch motion
+      all run alongside these, but they are execution, not strategy. What follows is.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 40px;">
+      <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">1</div>
+        <div>
+          <h3 style="margin-bottom: 8px;">Obtain written tax-counsel opinion</h3>
+          <p>Specialist UK tax counsel engaged. Opinion required on the s.257 application to the full
+          OTC-mediated gift flow, on the Ltd–Foundation services agreement, and on GAAR exposure. RPC,
+          Carter Backer Winter, KPMG Tax shortlisted. This gates the product — nothing ships before the
+          opinion is in hand. 2–3 months. £10–15k.</p>
+        </div>
+      </div>
+
+      <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">2</div>
+        <div>
+          <h3 style="margin-bottom: 8px;">Register the Foundation and seat trustees</h3>
+          <p>Sats for Good Foundation incorporated with the Charity Commission as a CIO. Charitable
+          objects clause drafted to cover crypto-asset receipt and grant-making. Three independent
+          trustees appointed: one charity-sector veteran, one crypto-sector professional, one tax or
+          legal background. Stone King or Bates Wells instructs. 3–6 months. If timeline slips, Prism
+          the Gift Fund or NPT UK as umbrella fallback.</p>
+        </div>
+      </div>
+
+      <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">3</div>
+        <div>
+          <h3 style="margin-bottom: 8px;">Lock the OTC and banking partnership</h3>
+          <p>BCB Group (primary) or Archax (backup) for licensed crypto-to-fiat conversion. Modulr
+          (primary) or Charities Aid Foundation (CAF) Bank (backup) for the Foundation's programmable payout rail. These two
+          agreements are the conversion spine — without them the whole product is theoretical.
+          Confirmation-of-Payee integration sourced from the banking partner. 2–3 months in parallel.</p>
+        </div>
+      </div>
+
+      <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">4</div>
+        <div>
+          <h3 style="margin-bottom: 8px;">Private donor cohort</h3>
+          <p>Ten to twenty HNW pilot donors identified through founder network. Private beta before any
+          public launch. The cohort validates the end-to-end flow, surfaces product and language
+          friction, and generates the first-volume credibility that underwrites the public launch
+          narrative. This is also the user research — done properly, not as a compliance tick.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  11 — EXPANSION                                                    -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s11">
+  <div class="wrap">
+    <span class="label">11 — Expansion</span>
+    <h2>The product <em>compounds.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      UK launch in 2026 is the beachhead. Growth runs along two vectors: product (adjacent features on the
+      same platform) and geography (replicating the full stack in ordered markets). Each geography has its
+      own local moat, built with the same pattern but tuned to the local tax and regulatory reality.
+    </p>
+
+    <h3 style="margin-top: 48px;">Geographic expansion</h3>
+    <p class="column">Markets split into two groups by how the value proposition lands locally.</p>
+
+    <h4 style="margin-top: 32px; color: var(--text);">Tax-efficiency markets</h4>
+    <table style="margin-top: 12px;">
+      <thead>
+        <tr>
+          <th>Market</th>
+          <th>Year</th>
+          <th>Local tax hook</th>
+          <th>Local moat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>United Kingdom</strong></td>
+          <td class="num">2026</td>
+          <td>s.257 TCGA 1992 — no-gain/no-loss gift to charity</td>
+          <td>See Section 07</td>
+        </tr>
+        <tr>
+          <td><strong>Canada</strong></td>
+          <td class="num">2027</td>
+          <td>Gift-of-securities precedent, CRA crypto disposal</td>
+          <td>CRA tax opinion + Canadian Registered Charity + federal banking (~3 months)</td>
+        </tr>
+        <tr>
+          <td><strong>Australia</strong></td>
+          <td class="num">2029</td>
+          <td>DGR (Deductible Gift Recipient) framework</td>
+          <td>DGR status + ATO opinion + AUSTRAC registration (~4 months)</td>
+        </tr>
+        <tr>
+          <td><strong>United States</strong></td>
+          <td class="num">2030</td>
+          <td>IRS fair-market-value deduction for long-held crypto</td>
+          <td>501(c)(3) + IRS determination letter + state-by-state solicitation registration · weakest moat, most competitive</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top: 40px; color: var(--text);">Convenience &amp; religious-integration markets</h4>
+    <p class="column">0% CGT markets where the tax-saving pitch is null; value proposition shifts to seamless
+    crypto-to-charity plumbing, high-quality receipts, and religious-giving infrastructure.</p>
+    <table style="margin-top: 12px;">
+      <thead>
+        <tr>
+          <th>Market</th>
+          <th>Year</th>
+          <th>Local value proposition</th>
+          <th>Local moat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>UAE</strong></td>
+          <td class="num">2028</td>
+          <td>Frictionless crypto zakat; waqf-compatible perpetual endowment rails; access to global charity catalogue</td>
+          <td>DIFC/ADGM charitable foundation + Sharia board sign-off + VARA registration · strongest non-UK moat</td>
+        </tr>
+        <tr>
+          <td><strong>Singapore</strong></td>
+          <td class="num">2029</td>
+          <td>IPC-status giving for crypto-native HNW; MUIS-aligned zakat integration</td>
+          <td>IPC status + MAS licensing + MUIS partnership</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 56px;">Product expansion — three horizons</h3>
+
+    <div style="margin-top: 24px;">
+      <h4 style="color: var(--text);">Horizon 1 · Year 1–2</h4>
+      <div class="grid-3" style="margin-top: 12px;">
+        <div class="card">
+          <h3>Koinly / Divly plugin</h3>
+          <p>"Donate instead of sell" button at the tax-loss harvesting moment. API-licensed. Highest-intent
+          distribution channel.</p>
+        </div>
+        <div class="card">
+          <h3>Wallet integrations</h3>
+          <p>Donate button inside Ledger Live, Trezor Suite, MetaMask snap. Point of highest donation intent.</p>
+        </div>
+        <div class="card">
+          <h3>Community cause funds</h3>
+          <p>Themed pooled DAFs: UK Food Bank Fund, Climate Coalition, emergency response funds. Endaoment
+          pattern, translated for UK.</p>
+        </div>
+        <div class="card">
+          <h3>Charity profile pages</h3>
+          <p>Any UK charity can claim a profile, add a crypto-accepted badge, receive donations. Charity-pull
+          acquisition, not just donor-push.</p>
+        </div>
+        <div class="card">
+          <h3>Recurring giving</h3>
+          <p>"Donate 1% of my BTC portfolio monthly." Dollar-cost-average charity. Subscription dynamics lift
+          donor LTV.</p>
+        </div>
+        <div class="card">
+          <h3>Tax-optimisation module</h3>
+          <p>Analyses donor's Koinly / CoinTracker data to recommend which asset to donate for maximum CGT
+          saving. Premium tier.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <h4 style="color: var(--text);">Horizon 2 · Year 2–3</h4>
+      <div class="grid-3" style="margin-top: 12px;">
+        <div class="card">
+          <h3>White-label DAF</h3>
+          <p>Charities, faith-based organisations, cause bodies launch their own branded crypto donation page
+          on our rails. SaaS + transaction fee.</p>
+        </div>
+        <div class="card">
+          <h3>Corporate giving</h3>
+          <p>Crypto-treasury companies donate appreciated positions to offset gains. Enterprise contracts.</p>
+        </div>
+        <div class="card">
+          <h3>Impact reporting loop</h3>
+          <p>Charity sends back "here's what your £X funded" update, surfaced in donor dashboard. Closes the
+          loop most charity platforms never close.</p>
+        </div>
+        <div class="card">
+          <h3>Planned / legacy giving</h3>
+          <p>Bequest integration with Farewill, Octopus Legacy. Crypto held beyond donor's lifetime,
+          distributed per registered instructions.</p>
+        </div>
+        <div class="card">
+          <h3>Payroll crypto giving</h3>
+          <p>Integrates with HiBob, Rippling, BitWage. Employer-matched crypto donation from salary.</p>
+        </div>
+        <div class="card">
+          <h3>On-chain receipts</h3>
+          <p>Optional verifiable on-chain attestation. Useful for ESG-reporting corporates, DAO treasuries,
+          and crypto-native credibility.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <h4 style="color: var(--text);">Horizon 3 · Year 3–5</h4>
+      <div class="grid-3" style="margin-top: 12px;">
+        <div class="card">
+          <h3>Waqf-as-a-Service</h3>
+          <p>Islamic perpetual endowments — principal preserved, yield disbursed annually. Sharia-board
+          overseen. Unique defensible vertical none of our Western competitors can replicate culturally.</p>
+        </div>
+        <div class="card">
+          <h3>Generalist tax-efficient giving</h3>
+          <p>Same s.257 mechanics work for listed shares, unit trusts, land, art. Crypto was the wedge; the
+          platform is the infrastructure.</p>
+        </div>
+        <div class="card">
+          <h3>Family-office tooling</h3>
+          <p>Multi-generational DAF management, allocation rebalancing, impact reporting. Enterprise SaaS.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  12 — EXIT                                                         -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="s12">
+  <div class="wrap">
+    <span class="label">12 — Exit</span>
+    <h2>Year 5 has <em>four natural buyers.</em></h2>
+
+    <p class="column" style="margin-top: 20px;">
+      Year-5 base case: £180m annual donation volume, £8m revenue, ~60% EBITDA margin. That profile is
+      attractive to four categories of acquirer, each with a distinct logic. The platform is designed to be
+      acquirable from day one — clean corporate structure, separable revenue streams, defensible charity
+      rails that transfer with the company.
+    </p>
+
+    <table style="margin-top: 32px;">
+      <thead>
+        <tr>
+          <th>Acquirer category</th>
+          <th>Named candidates</th>
+          <th>Acquisition logic</th>
+          <th>Multiple</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Charity infrastructure</strong></td>
+          <td>Charities Aid Foundation (CAF), JustGiving, Blackbaud, Benevity</td>
+          <td>Instant crypto capability, HNW donor acquisition, modernisation narrative</td>
+          <td class="num">10–15× revenue</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto financial services</strong></td>
+          <td>Coinbase Ventures, Circle, Kraken, a major UK-licensed exchange</td>
+          <td>ESG and brand, captive donor base, regulatory goodwill in home market</td>
+          <td class="num">15–25× revenue</td>
+        </tr>
+        <tr>
+          <td><strong>Private bank / wealth manager</strong></td>
+          <td>HSBC Private Bank, Schwab Charitable UK, St James's Place</td>
+          <td>Cross-sell to HNW clients; tax-efficient giving as a product line</td>
+          <td class="num">10–15× revenue</td>
+        </tr>
+        <tr>
+          <td><strong>Payments consolidator</strong></td>
+          <td>Stripe (philanthropy), Wise, Adyen</td>
+          <td>Category expansion into charity rails; cross-border giving integration</td>
+          <td class="num">12–20× revenue</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="stat">
+        <div class="stat-value">£20<em>–30m</em></div>
+        <div class="stat-label">Bear case Y5 exit valuation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">£90<em>–120m</em></div>
+        <div class="stat-label">Base case Y5 exit valuation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">£310<em>–380m</em></div>
+        <div class="stat-label">Bull case Y5 exit valuation</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 40px;">
+      <p><strong>The instinct on who's most likely.</strong> Charities Aid Foundation (CAF) and Coinbase Ventures are the two most
+      probable strategic acquirers by end of Year 5 — Charities Aid Foundation (CAF) for the crypto capability gap they can no longer
+      defer, Coinbase for the ESG narrative and regulatory goodwill they need in UK. The first one to commit
+      likely triggers a bidding dynamic that closes the gap on valuation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  APPENDIX A — COST & PROFITABILITY                                  -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<section id="sA">
+  <div class="wrap">
+    <span class="label">Appendix A — Cost &amp; Profitability Model</span>
+    <h2>The <em>unit economics</em> behind the top line.</h2>
+
+    <p class="column" style="margin-top: 20px;">
+      Revenue without cost discipline is vanity. The model below reflects an AI-augmented solo-founder
+      operation (Claude as the core engineering team, supplemented by part-time contractors from Y3). Founder
+      compensation is shown at £0 as a placeholder — to be set against drawdown or retention of equity per
+      funding model chosen.
+    </p>
+
+    <h3 style="margin-top: 40px;">Fixed cost structure</h3>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th class="num">Year 1</th>
+          <th class="num">Year 3</th>
+          <th class="num">Year 5 (6 markets)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Founder(s) — placeholder</td>
+          <td class="num">£0</td>
+          <td class="num">£0</td>
+          <td class="num">£0</td>
+        </tr>
+        <tr>
+          <td>AI tooling (Claude Max, Cursor, hosting)</td>
+          <td class="num">£5k</td>
+          <td class="num">£12k</td>
+          <td class="num">£30k</td>
+        </tr>
+        <tr>
+          <td>Part-time contractor(s)</td>
+          <td class="num">£0</td>
+          <td class="num">£40k</td>
+          <td class="num">£150k</td>
+        </tr>
+        <tr>
+          <td>Compliance ops + KYC vendor fees</td>
+          <td class="num">£30k</td>
+          <td class="num">£60k</td>
+          <td class="num">£180k</td>
+        </tr>
+        <tr>
+          <td>Legal + audit (charity + Ltd)</td>
+          <td class="num">£35k</td>
+          <td class="num">£60k</td>
+          <td class="num">£220k</td>
+        </tr>
+        <tr>
+          <td>Insurance (D&amp;O + cyber + trustee)</td>
+          <td class="num">£15k</td>
+          <td class="num">£25k</td>
+          <td class="num">£60k</td>
+        </tr>
+        <tr>
+          <td>Infrastructure</td>
+          <td class="num">£8k</td>
+          <td class="num">£25k</td>
+          <td class="num">£80k</td>
+        </tr>
+        <tr>
+          <td>Tax counsel retainer</td>
+          <td class="num">£20k</td>
+          <td class="num">£30k</td>
+          <td class="num">£80k</td>
+        </tr>
+        <tr>
+          <td>Marketing</td>
+          <td class="num">£40k</td>
+          <td class="num">£130k</td>
+          <td class="num">£400k</td>
+        </tr>
+        <tr>
+          <td><strong>Total fixed cost</strong></td>
+          <td class="num"><strong>£153k</strong></td>
+          <td class="num"><strong>£382k</strong></td>
+          <td class="num"><strong>£1.20m</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 44px;">Variable cost per donation</h3>
+    <div class="grid-4" style="margin-top: 20px;">
+      <div class="stat">
+        <div class="stat-value">~0.6<em>%</em></div>
+        <div class="stat-label">OTC spread</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">£0.50</div>
+        <div class="stat-label">Per FPS payout</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">£8</div>
+        <div class="stat-label">KYC per new donor</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">~0.8<em>%</em></div>
+        <div class="stat-label">Blended variable cost</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">P&amp;L — Base case (UK + global)</h3>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="num">Year 1 (2026)</th>
+          <th class="num">Year 3 (2028)</th>
+          <th class="num">Year 5 (2030)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Donation volume</td>
+          <td class="num">£2m</td>
+          <td class="num">£35m</td>
+          <td class="num">£180m</td>
+        </tr>
+        <tr>
+          <td>Core revenue (3.5% blended)</td>
+          <td class="num">£70k</td>
+          <td class="num">£1.23m</td>
+          <td class="num">£6.30m</td>
+        </tr>
+        <tr>
+          <td>Adjacent revenue (API · SaaS · enterprise · float)</td>
+          <td class="num">£10k</td>
+          <td class="num">£250k</td>
+          <td class="num">£2.0m</td>
+        </tr>
+        <tr>
+          <td><strong>Total revenue</strong></td>
+          <td class="num"><strong>£80k</strong></td>
+          <td class="num"><strong>£1.48m</strong></td>
+          <td class="num"><strong>£8.30m</strong></td>
+        </tr>
+        <tr>
+          <td>Variable costs (~0.8%)</td>
+          <td class="num">(£24k)</td>
+          <td class="num">(£310k)</td>
+          <td class="num">(£1.60m)</td>
+        </tr>
+        <tr>
+          <td>Fixed costs</td>
+          <td class="num">(£153k)</td>
+          <td class="num">(£382k)</td>
+          <td class="num">(£1.20m)</td>
+        </tr>
+        <tr>
+          <td><strong>EBITDA</strong></td>
+          <td class="num"><strong>(£97k)</strong></td>
+          <td class="num"><strong>£788k</strong></td>
+          <td class="num"><strong>£5.50m</strong></td>
+        </tr>
+        <tr>
+          <td><strong>EBITDA margin</strong></td>
+          <td class="num"><strong>–121%</strong></td>
+          <td class="num"><strong>53%</strong></td>
+          <td class="num"><strong>66%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top: 32px;">
+      <p><strong>Break-even:</strong> mid-Year 2 base case. Year 3 is the first clearly profitable year at 53%
+      EBITDA margin. Year 5 scales to 66% — SaaS-grade. Bear case breaks even Year 4; bull case Year 1.</p>
+    </div>
+
+    <h3 style="margin-top: 48px;">Scenario comparison</h3>
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="scenario bear">
+        <div class="scenario-label">Bear (Y5)</div>
+        <div class="scenario-row"><span>Volume</span><span>£50m</span></div>
+        <div class="scenario-row"><span>Revenue</span><span>£2.0m</span></div>
+        <div class="scenario-row"><span>EBITDA</span><span>£650k</span></div>
+        <div class="scenario-row"><span>Margin</span><span>33%</span></div>
+      </div>
+      <div class="scenario base">
+        <div class="scenario-label">Base (Y5)</div>
+        <div class="scenario-row"><span>Volume</span><span>£180m</span></div>
+        <div class="scenario-row"><span>Revenue</span><span>£8.3m</span></div>
+        <div class="scenario-row"><span>EBITDA</span><span>£5.5m</span></div>
+        <div class="scenario-row"><span>Margin</span><span>66%</span></div>
+      </div>
+      <div class="scenario bull">
+        <div class="scenario-label">Bull (Y5)</div>
+        <div class="scenario-row"><span>Volume</span><span>£450m</span></div>
+        <div class="scenario-row"><span>Revenue</span><span>£17.5m</span></div>
+        <div class="scenario-row"><span>EBITDA</span><span>£12.5m</span></div>
+        <div class="scenario-row"><span>Margin</span><span>71%</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">Funding implication</h3>
+    <p class="column">Year 1 and Year 2 run at ~£150–250k annual burn on the base case. A modest pre-seed or
+    angel round (£300–500k) covers the pre-break-even window with comfort. Bootstrap is also credible if
+    founder can absorb the personal-income gap. The pre-launch legal slice is itself cost-disciplined:
+    Charity Commission pre-registration engagement (free) precedes the CIO filing, and the tax-counsel
+    opinion is commissioned on a fixed fee after free scoping calls with 2–3 firms — never hourly. Brief
+    deliberately does not prescribe the funding route.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-flex">
+      <div>
+        <div class="footer-mark">Bitcoin <em>for</em> Good</div>
+        <p style="margin-top: 6px;">Sats for Good Ltd · Sats for Good Foundation (CIO pending)</p>
+      </div>
+      <p>Confidential Brief · April 2026 · not for distribution</p>
+    </div>
+  </div>
+</footer>
+
+</div> <!-- /#content -->
+
+<script>
+  (function () {
+    const PASSWORD = 'bitcoinforgood2026';
+    const pwScreen = document.getElementById('pw-screen');
+    const pwInput  = document.getElementById('pw-input');
+    const pwBtn    = document.getElementById('pw-submit');
+    const pwErr    = document.getElementById('pw-error');
+    const content  = document.getElementById('content');
+
+    function unlock() {
+      if (pwInput.value === PASSWORD) {
+        pwScreen.style.display = 'none';
+        content.style.display = 'block';
+        try { sessionStorage.setItem('bfg_unlocked', '1'); } catch (e) {}
+      } else {
+        pwErr.textContent = 'Incorrect. Try again.';
+        pwInput.value = '';
+        pwInput.focus();
+      }
+    }
+
+    pwBtn.addEventListener('click', unlock);
+    pwInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') unlock(); });
+
+    try {
+      if (sessionStorage.getItem('bfg_unlocked') === '1') {
+        pwScreen.style.display = 'none';
+        content.style.display = 'block';
+      } else {
+        setTimeout(function () { pwInput.focus(); }, 100);
+      }
+    } catch (e) {
+      setTimeout(function () { pwInput.focus(); }, 100);
+    }
+  })();
+</script>
+
+</body>
+</html>
