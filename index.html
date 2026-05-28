@@ -37,7 +37,7 @@
       color: var(--text);
       font-family: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
       font-weight: 400;
-      font-size: 17px;
+      font-size: 20px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
       font-feature-settings: "liga", "kern";
@@ -58,14 +58,14 @@
     }
     #pw-screen .pw-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 32px; font-weight: 800;
+      font-size: 38px; font-weight: 800;
       letter-spacing: -0.02em; color: var(--text);
     }
     #pw-screen .pw-logo em { color: var(--gold); font-style: italic; font-weight: 700; }
-    #pw-screen p { color: var(--muted); font-size: 14px; font-family: 'Inter', sans-serif; }
+    #pw-screen p { color: var(--muted); font-size: 17px; font-family: 'Inter', sans-serif; }
     #pw-screen input {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 14px 20px; font-size: 15px;
+      border-radius: 8px; padding: 14px 20px; font-size: 18px;
       color: var(--text); width: 300px; outline: none;
       font-family: 'Inter', sans-serif;
       transition: border-color 0.2s; text-align: center; letter-spacing: 0.08em;
@@ -74,12 +74,12 @@
     #pw-screen button {
       background: var(--text);
       color: var(--bg); border: none; border-radius: 8px;
-      padding: 13px 32px; font-size: 14px; font-weight: 600;
+      padding: 13px 32px; font-size: 17px; font-weight: 600;
       cursor: pointer; font-family: 'Inter', sans-serif; width: 300px;
       letter-spacing: 0.04em; transition: opacity 0.2s;
     }
     #pw-screen button:hover { opacity: 0.88; }
-    #pw-screen .pw-error { color: var(--claret); font-size: 13px; min-height: 20px; font-family: 'Inter', sans-serif; }
+    #pw-screen .pw-error { color: var(--claret); font-size: 16px; min-height: 20px; font-family: 'Inter', sans-serif; }
 
     /* ── Layout ───────────────────────────────────────────────────── */
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
@@ -93,7 +93,7 @@
 
     h1 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(44px, 6.5vw, 84px);
+      font-size: clamp(53px, 6.5vw, 101px);
       font-weight: 800;
       line-height: 1.02;
       letter-spacing: -0.025em;
@@ -102,7 +102,7 @@
 
     h2 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(26px, 3.6vw, 42px);
+      font-size: clamp(31px, 3.6vw, 50px);
       font-weight: 700;
       letter-spacing: -0.015em;
       line-height: 1.15;
@@ -112,7 +112,7 @@
 
     h3 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: -0.005em;
       margin-bottom: 10px;
@@ -120,13 +120,13 @@
 
     h4 {
       font-family: 'Inter', sans-serif;
-      font-size: 12px; font-weight: 600;
+      font-size: 14px; font-weight: 600;
       color: var(--muted);
       text-transform: uppercase; letter-spacing: 0.1em;
       margin-bottom: 14px;
     }
 
-    p { color: var(--text-mid); margin-bottom: 18px; font-size: 17px; }
+    p { color: var(--text-mid); margin-bottom: 18px; font-size: 20px; }
     p:last-child { margin-bottom: 0; }
     p strong { color: var(--text); font-weight: 600; }
     p em { font-style: italic; }
@@ -134,7 +134,7 @@
     p a:hover { border-bottom-color: var(--gold); }
 
     .lead {
-      font-size: 20px; line-height: 1.6;
+      font-size: 24px; line-height: 1.6;
       color: var(--text-mid); font-weight: 400;
     }
     .lead strong { color: var(--text); font-weight: 500; }
@@ -142,7 +142,7 @@
     .label {
       display: inline-block;
       font-family: 'Inter', sans-serif;
-      font-size: 11px; font-weight: 700;
+      font-size: 13px; font-weight: 700;
       color: var(--gold);
       text-transform: uppercase; letter-spacing: 0.14em;
       margin-bottom: 20px;
@@ -154,7 +154,7 @@
       border: 1px solid var(--gold-edge);
       border-radius: 100px; padding: 6px 14px;
       font-family: 'Inter', sans-serif;
-      font-size: 11px; color: var(--gold); font-weight: 600;
+      font-size: 13px; color: var(--gold); font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 28px;
     }
@@ -177,13 +177,13 @@
     .spine-clause {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      font-size: clamp(16px, 1.8vw, 21px);
+      font-size: clamp(19px, 1.8vw, 25px);
       font-weight: 700;
       padding: 0 28px;
       color: var(--bg);
     }
     .spine-clause em { color: var(--gold); font-style: italic; }
-    .spine-divider { color: rgba(247,243,237,0.35); font-size: 18px; }
+    .spine-divider { color: rgba(247,243,237,0.35); font-size: 22px; }
 
     /* ── Cards ────────────────────────────────────────────────────── */
     .card {
@@ -194,7 +194,7 @@
     }
     .card-sm { padding: 22px; }
     .card h3 { margin-bottom: 10px; }
-    .card p { font-size: 15px; margin-bottom: 12px; }
+    .card p { font-size: 18px; margin-bottom: 12px; }
     .card p:last-child { margin-bottom: 0; }
 
     .callout {
@@ -204,7 +204,7 @@
       padding: 20px 26px;
       margin: 28px 0;
     }
-    .callout p { color: var(--text); font-size: 16px; margin-bottom: 10px; }
+    .callout p { color: var(--text); font-size: 19px; margin-bottom: 10px; }
     .callout p:last-child { margin-bottom: 0; }
 
     .insight {
@@ -215,11 +215,11 @@
       margin: 28px 0;
     }
     .insight h4 { margin-bottom: 10px; color: var(--moss); }
-    .insight p { font-size: 16px; margin-bottom: 0; }
+    .insight p { font-size: 19px; margin-bottom: 0; }
 
     .pullquote {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(22px, 2.4vw, 28px);
+      font-size: clamp(26px, 2.4vw, 34px);
       line-height: 1.35;
       font-style: italic;
       font-weight: 700;
@@ -233,7 +233,7 @@
       display: block;
       font-family: 'Inter', sans-serif;
       font-style: normal;
-      font-size: 12px; font-weight: 600;
+      font-size: 14px; font-weight: 600;
       color: var(--muted);
       letter-spacing: 0.08em; text-transform: uppercase;
       margin-top: 14px;
@@ -249,12 +249,12 @@
     }
 
     /* ── Tables ───────────────────────────────────────────────────── */
-    table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 24px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 18px; margin: 24px 0; }
     th {
       text-align: left;
       padding: 14px 16px;
       font-family: 'Inter', sans-serif;
-      font-size: 11px; font-weight: 600;
+      font-size: 13px; font-weight: 600;
       color: var(--muted);
       text-transform: uppercase; letter-spacing: 0.1em;
       background: var(--surface2);
@@ -265,7 +265,7 @@
       border-bottom: 1px solid var(--border-soft);
       color: var(--text-mid);
       vertical-align: top;
-      font-size: 15px;
+      font-size: 18px;
     }
     tr:last-child td { border-bottom: none; }
     td strong { color: var(--text); font-weight: 600; }
@@ -277,7 +277,7 @@
       padding: 3px 10px;
       border-radius: 100px;
       font-family: 'Inter', sans-serif;
-      font-size: 10px; font-weight: 600;
+      font-size: 12px; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
     }
     .badge-moss  { background: var(--moss-soft);  color: var(--moss); }
@@ -294,7 +294,7 @@
     }
     .stat-value {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 44px; font-weight: 800;
+      font-size: 53px; font-weight: 800;
       line-height: 1;
       color: var(--text);
       letter-spacing: -0.02em;
@@ -302,7 +302,7 @@
     .stat-value em { color: var(--gold); font-style: italic; }
     .stat-label {
       font-family: 'Inter', sans-serif;
-      font-size: 11px; font-weight: 600;
+      font-size: 13px; font-weight: 600;
       color: var(--muted);
       text-transform: uppercase; letter-spacing: 0.1em;
       margin-top: 10px;
@@ -318,7 +318,7 @@
     .scenario h4 { color: var(--muted); }
     .scenario-label {
       font-family: 'Inter', sans-serif;
-      font-size: 11px; font-weight: 700;
+      font-size: 13px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       margin-bottom: 14px;
     }
@@ -329,10 +329,10 @@
       display: flex; justify-content: space-between;
       padding: 8px 0;
       border-bottom: 1px solid var(--border-soft);
-      font-size: 14px;
+      font-size: 17px;
     }
     .scenario-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .scenario-row span:first-child { color: var(--muted); font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .scenario-row span:first-child { color: var(--muted); font-family: 'Inter', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; }
     .scenario-row span:last-child { color: var(--text); font-variant-numeric: tabular-nums; font-family: 'Inter', sans-serif; font-weight: 600; }
 
     /* ── Moat panel ───────────────────────────────────────────────── */
@@ -353,12 +353,12 @@
     .moat-item:last-child { border-bottom: none; }
     .moat-num {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 22px; font-weight: 800;
+      font-size: 26px; font-weight: 800;
       color: var(--gold); font-style: italic;
       line-height: 1;
     }
-    .moat-item h3 { font-size: 17px; margin-bottom: 4px; }
-    .moat-item p { font-size: 15px; margin-bottom: 0; }
+    .moat-item h3 { font-size: 20px; margin-bottom: 4px; }
+    .moat-item p { font-size: 18px; margin-bottom: 0; }
 
     /* ── Footer ───────────────────────────────────────────────────── */
     footer {
@@ -366,10 +366,10 @@
       border-top: 1px solid var(--border);
       background: var(--surface2);
     }
-    footer p { font-size: 13px; color: var(--muted); margin: 0; font-family: 'Inter', sans-serif; }
+    footer p { font-size: 16px; color: var(--muted); margin: 0; font-family: 'Inter', sans-serif; }
     .footer-mark {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 18px; font-weight: 800;
+      font-size: 22px; font-weight: 800;
       color: var(--text); letter-spacing: -0.015em;
     }
     .footer-mark em { color: var(--gold); font-style: italic; }
@@ -385,7 +385,7 @@
     }
     header h1 { margin-bottom: 28px; }
     .tagline {
-      font-size: clamp(17px, 2vw, 22px);
+      font-size: clamp(20px, 2vw, 26px);
       color: var(--text-mid);
       max-width: 640px; line-height: 1.6;
       margin-bottom: 32px; font-weight: 400;
@@ -398,8 +398,8 @@
       padding: 20px 0;
       border-top: 1px solid var(--border);
     }
-    .meta-item h4 { margin-bottom: 4px; font-size: 10px; }
-    .meta-item p { font-size: 14px; color: var(--text); margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; }
+    .meta-item h4 { margin-bottom: 4px; font-size: 12px; }
+    .meta-item p { font-size: 17px; color: var(--text); margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; }
 
     /* Section anchor offset */
     section[id] { scroll-margin-top: 20px; }
@@ -417,7 +417,7 @@
       padding: 10px 0;
       border-bottom: 1px solid var(--border-soft);
       font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 500;
+      font-size: 16px; font-weight: 500;
       color: var(--text);
       text-decoration: none;
       letter-spacing: 0.02em;
@@ -431,7 +431,7 @@
       font-variant-numeric: tabular-nums;
       min-width: 20px;
     }
-    .toc a span:last-child { color: var(--muted); font-size: 11px; }
+    .toc a span:last-child { color: var(--muted); font-size: 13px; }
     @media(max-width: 780px) { .toc { grid-template-columns: 1fr; } }
 
   </style>
@@ -749,19 +749,19 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>TAM</strong><br><span style="color: var(--muted); font-size: 13px;">UK HNW crypto hodlers with charitable intent</span></td>
+          <td><strong>TAM</strong><br><span style="color: var(--muted); font-size: 16px;">UK HNW crypto hodlers with charitable intent</span></td>
           <td class="num">150k–200k</td>
           <td class="num">£8k–£15k/yr</td>
           <td class="num"><strong>£1.5–4bn/yr</strong></td>
         </tr>
         <tr>
-          <td><strong>SAM</strong><br><span style="color: var(--muted); font-size: 13px;">With meaningfully appreciated positions</span></td>
+          <td><strong>SAM</strong><br><span style="color: var(--muted); font-size: 16px;">With meaningfully appreciated positions</span></td>
           <td class="num">30k–50k</td>
           <td class="num">~£10k/yr</td>
           <td class="num"><strong>£300–500m/yr</strong></td>
         </tr>
         <tr>
-          <td><strong>SOM — Year 5</strong><br><span style="color: var(--muted); font-size: 13px;">Realistic capture, UK-only</span></td>
+          <td><strong>SOM — Year 5</strong><br><span style="color: var(--muted); font-size: 16px;">Realistic capture, UK-only</span></td>
           <td class="num">3k–5k</td>
           <td class="num">£10k–£12k</td>
           <td class="num"><strong>£30–60m/yr</strong></td>
@@ -1140,7 +1140,7 @@
         </tr>
       </tbody>
     </table>
-    <p style="font-size: 12px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
       Fees as of mid-2025; verify before use in any donor-facing materials. "Effective to charity" assumes a
       single £10,000 gift on each platform's most common donor path; real outcomes vary with payment method,
       subscription tier, and whether the platform routes through a DAF.
@@ -1274,7 +1274,7 @@
     </div>
 
     <h3 style="margin-top: 48px;">Banking rails</h3>
-    <p class="column" style="margin-top: 8px; margin-bottom: 16px; font-size: 15px;">
+    <p class="column" style="margin-top: 8px; margin-bottom: 16px; font-size: 18px;">
       The Foundation needs a UK-regulated operational account willing to accept inbound OTC-settled GBP and
       initiate high-volume Faster Payments to charities. Six candidates, two primary tracks — EMI-first
       (speed, programmability) or charity-native (reputation, sector fit). Multiple relationships in parallel
@@ -1408,49 +1408,49 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>Fidelity Charitable</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td><strong>Fidelity Charitable</strong> <span style="color: var(--muted); font-size: 14px;">US</span></td>
           <td>Fidelity Charitable (501(c)(3) public charity — the largest DAF in the world, ~$50bn AUM)</td>
           <td>Fidelity Investments (for-profit asset manager)</td>
           <td>Commercial entity provides platform, investment, and admin services to charity under an arm's-length services agreement; charity pays fees.</td>
         </tr>
         <tr>
-          <td><strong>Schwab Charitable</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td><strong>Schwab Charitable</strong> <span style="color: var(--muted); font-size: 14px;">US</span></td>
           <td>Schwab Charitable (independent 501(c)(3) DAF)</td>
           <td>Charles Schwab &amp; Co. (for-profit broker-dealer)</td>
           <td>Identical pattern to Fidelity. Independent board; Schwab provides platform services on contract.</td>
         </tr>
         <tr>
-          <td><strong>Vanguard Charitable</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td><strong>Vanguard Charitable</strong> <span style="color: var(--muted); font-size: 14px;">US</span></td>
           <td>Vanguard Charitable (501(c)(3) DAF)</td>
           <td>Vanguard Group (for-profit asset manager)</td>
           <td>Vanguard Group administers investments for the charity; service-fee structure; separate boards.</td>
         </tr>
         <tr>
-          <td><strong>Charities Aid Foundation (CAF)</strong> <span style="color: var(--muted); font-size: 12px;">UK</span></td>
+          <td><strong>Charities Aid Foundation (CAF)</strong> <span style="color: var(--muted); font-size: 14px;">UK</span></td>
           <td>Charities Aid Foundation (CAF) — registered UK charity, oldest UK DAF sponsor</td>
           <td>CAF Bank Ltd (for-profit subsidiary bank) and CAF-branded commercial services</td>
           <td>Charity owns/contracts with the commercial bank; profits flow back to the charity. Established UK precedent of the pattern.</td>
         </tr>
         <tr>
-          <td><strong>National Trust</strong> <span style="color: var(--muted); font-size: 12px;">UK</span></td>
+          <td><strong>National Trust</strong> <span style="color: var(--muted); font-size: 14px;">UK</span></td>
           <td>The National Trust (registered UK charity)</td>
           <td>National Trust (Enterprises) Ltd — trading subsidiary</td>
           <td>Trading subsidiary runs shops, cafés, holiday cottages; gift-aids 100% of profits back to the charity. Classic UK trading-subsidiary pattern.</td>
         </tr>
         <tr>
-          <td><strong>Cancer Research UK</strong> <span style="color: var(--muted); font-size: 12px;">UK</span></td>
+          <td><strong>Cancer Research UK</strong> <span style="color: var(--muted); font-size: 14px;">UK</span></td>
           <td>Cancer Research UK (registered UK charity)</td>
           <td>Cancer Research UK Trading Ltd — subsidiary</td>
           <td>Subsidiary handles commercial activities (merchandise, sponsorships); gift-aids profits to parent charity.</td>
         </tr>
         <tr>
-          <td><strong>Mozilla</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td><strong>Mozilla</strong> <span style="color: var(--muted); font-size: 14px;">US</span></td>
           <td>Mozilla Foundation (501(c)(3) non-profit)</td>
           <td>Mozilla Corporation (wholly-owned taxable subsidiary — builds Firefox)</td>
           <td>Foundation owns Corporation; Corporation's profits ultimately benefit the Foundation's mission. Tech-sector precedent of the pattern.</td>
         </tr>
         <tr>
-          <td><strong>Newman's Own</strong> <span style="color: var(--muted); font-size: 12px;">US</span></td>
+          <td><strong>Newman's Own</strong> <span style="color: var(--muted); font-size: 14px;">US</span></td>
           <td>Newman's Own Foundation (501(c)(3))</td>
           <td>Newman's Own Inc. (food company)</td>
           <td>Foundation owns the for-profit food company outright; 100% of company profits donated to the Foundation annually. Pattern codified by federal law in 2018 for private-foundation business holdings.</td>
@@ -1464,7 +1464,7 @@
       </tbody>
     </table>
 
-    <p style="font-size: 12px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
       The structural variants differ (parent-subsidiary, sibling-services, wholly-owned taxable), but the
       underlying pattern — a charity + a commercial entity cooperating under documented terms — is the default
       for large-scale giving infrastructure, both sides of the Atlantic.
@@ -1495,25 +1495,25 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>Sats for Good Pte Ltd</strong> <span style="color: var(--muted); font-size: 12px;">HoldCo</span></td>
+          <td><strong>Sats for Good Pte Ltd</strong> <span style="color: var(--muted); font-size: 14px;">HoldCo</span></td>
           <td>Singapore</td>
           <td>Founder-owned</td>
           <td>Owns the IP, brand, platform code. Holds 100% of the UK OpCo shares. Receives IP-licensing fees and dividends from UK.</td>
         </tr>
         <tr>
-          <td><strong>Sats for Good Ltd</strong> <span style="color: var(--muted); font-size: 12px;">UK OpCo</span></td>
+          <td><strong>Sats for Good Ltd</strong> <span style="color: var(--muted); font-size: 14px;">UK OpCo</span></td>
           <td>United Kingdom</td>
           <td>Wholly-owned subsidiary of SG HoldCo</td>
           <td>Operates the UK-regulated platform. Holds the FCA s.21 promotions arrangement, banking rails, OTC contract. Contracts with the Foundation for platform services.</td>
         </tr>
         <tr>
-          <td><strong>Sats for Good Foundation</strong> <span style="color: var(--muted); font-size: 12px;">UK CIO</span></td>
+          <td><strong>Sats for Good Foundation</strong> <span style="color: var(--muted); font-size: 14px;">UK CIO</span></td>
           <td>United Kingdom</td>
           <td>Legally independent — not owned by any other entity in this group</td>
           <td>Registered UK charity. Legal recipient of every donation under s.257 TCGA 1992. Independently governed by trustees; contracts the UK OpCo on arm's-length terms for services.</td>
         </tr>
         <tr>
-          <td><strong>VicariousCore Pte Ltd</strong> <span style="color: var(--muted); font-size: 12px;">ConsultingCo · shared across ventures</span></td>
+          <td><strong>VicariousCore Pte Ltd</strong> <span style="color: var(--muted); font-size: 14px;">ConsultingCo · shared across ventures</span></td>
           <td>Singapore</td>
           <td>100% founder-owned; separate from SG HoldCo</td>
           <td>Invoices SG HoldCo for founder's strategic / advisory services. No employment relationship between the founder and any operating entity — all founder value extracted through this route.</td>
@@ -1525,7 +1525,7 @@
     <div class="grid-2" style="margin-top: 20px;">
       <div class="card">
         <h3>Gift leg — donor to charity</h3>
-        <p style="font-size: 15px;">
+        <p style="font-size: 18px;">
           1. UK donor gifts crypto → <em>Sats for Good Foundation (UK CIO)</em>. Full s.257 relief preserved; the
           recipient is a UK-registered charity governed by independent trustees.<br><br>
           2. Foundation pays a tiered platform-services fee (4% / 3% / 2%, blended ~3.5%) to <em>Sats for Good Ltd (UK OpCo)</em>
@@ -1535,7 +1535,7 @@
       </div>
       <div class="card">
         <h3>Profit leg — OpCo to founder</h3>
-        <p style="font-size: 15px;">
+        <p style="font-size: 18px;">
           4. UK OpCo pays UK corporation tax (25%) on net taxable profit. Prior to that, it deducts an
           arm's-length IP-licensing fee / management charge to <em>SG HoldCo</em>.<br><br>
           5. UK OpCo dividends post-tax profit to SG HoldCo (0% UK withholding under UK–Singapore double-tax treaty).<br><br>
@@ -1556,7 +1556,7 @@
     </div>
 
     <h3 style="margin-top: 40px;">Why this works from Year 1 with 100% UK-donor capture</h3>
-    <ul style="margin-top: 14px; padding-left: 20px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-mid);">
+    <ul style="margin-top: 14px; padding-left: 20px; font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.7; color: var(--text-mid);">
       <li style="margin-bottom: 10px;"><strong>Donor sees only the UK front.</strong> The brand, the website, the charity number, the legal recipient — all UK. The offshore holding layer is invisible to the donor flow.</li>
       <li style="margin-bottom: 10px;"><strong>s.257 tax relief is preserved.</strong> The legal recipient of every gift is a UK-registered charity with independent trustees. The offshore shareholding of the OpCo is immaterial to the tax treatment of the donation.</li>
       <li style="margin-bottom: 10px;"><strong>FCA s.21 approval sits with the UK OpCo.</strong> The Singapore entities never communicate with UK donors. All financial promotions flow through the UK-regulated entity, as the FCA regime requires.</li>
@@ -1567,15 +1567,15 @@
     <div class="grid-3" style="margin-top: 20px;">
       <div class="card">
         <h3>Singapore economic substance <span class="badge badge-moss" style="margin-left: 6px;">Met</span></h3>
-        <p style="font-size: 14px;">Singapore tax authorities and UK CFC rules both require real SG activity for the HoldCo to be respected for tax purposes. The founder is a Singapore citizen and tax resident — making substance immediate, not manufactured. Genuine strategic decision-making sits in Singapore; office and employee footprint scales with the business.</p>
+        <p style="font-size: 17px;">Singapore tax authorities and UK CFC rules both require real SG activity for the HoldCo to be respected for tax purposes. The founder is a Singapore citizen and tax resident — making substance immediate, not manufactured. Genuine strategic decision-making sits in Singapore; office and employee footprint scales with the business.</p>
       </div>
       <div class="card">
         <h3>Transfer pricing <span class="badge badge-gold" style="margin-left: 6px;">Documented</span></h3>
-        <p style="font-size: 14px;">Every UK→SG fee (IP licensing, management charge, consulting fee from SG HoldCo to VicariousCore) must be arm's length under OECD BEPS / HMRC rules. A written transfer-pricing study from a Big Four practice (Deloitte SG or EY SG recommended; ~£10–25k initial, annual refresh) fixes the fee basis and documents it for HMRC audit.</p>
+        <p style="font-size: 17px;">Every UK→SG fee (IP licensing, management charge, consulting fee from SG HoldCo to VicariousCore) must be arm's length under OECD BEPS / HMRC rules. A written transfer-pricing study from a Big Four practice (Deloitte SG or EY SG recommended; ~£10–25k initial, annual refresh) fixes the fee basis and documents it for HMRC audit.</p>
       </div>
       <div class="card">
         <h3>Charity independence <span class="badge badge-moss" style="margin-left: 6px;">By design</span></h3>
-        <p style="font-size: 14px;">The UK CIO must be visibly independent of the commercial group for the Charity Commission to be comfortable. At least three unaffiliated trustees, documented arm's-length services agreement with UK OpCo, minuted board decisions — the Commission's standard independence tests, applied properly from day one.</p>
+        <p style="font-size: 17px;">The UK CIO must be visibly independent of the commercial group for the Charity Commission to be comfortable. At least three unaffiliated trustees, documented arm's-length services agreement with UK OpCo, minuted board decisions — the Commission's standard independence tests, applied properly from day one.</p>
       </div>
     </div>
 
@@ -1619,7 +1619,7 @@
         </tr>
       </tbody>
     </table>
-    <p style="font-size: 12px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
       The SG line assumes 40% of OpCo profit is legitimately migrated to SG HoldCo via arm's-length IP licensing;
       the balance stays in the UK and pays UK corp tax. A more conservative TP outcome (20% migration) yields
       ~£60 retained; an aggressive one (60%+) attracts HMRC challenge and is off-table.
@@ -1628,45 +1628,45 @@
     <h3 style="margin-top: 40px;">Incorporation sequence</h3>
     <div class="grid-2" style="margin-top: 20px;">
       <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">1</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">1</div>
         <div>
-          <h3 style="margin-bottom: 6px; font-size: 17px;">Incorporate Sats for Good Pte Ltd (SG HoldCo)</h3>
-          <p style="font-size: 14px; margin: 0;">1–2 weeks via a Singapore formation agent. Shareholding issued to founder. Basic SG resident director already in place (founder).</p>
+          <h3 style="margin-bottom: 6px; font-size: 20px;">Incorporate Sats for Good Pte Ltd (SG HoldCo)</h3>
+          <p style="font-size: 17px; margin: 0;">1–2 weeks via a Singapore formation agent. Shareholding issued to founder. Basic SG resident director already in place (founder).</p>
         </div>
       </div>
       <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">2</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">2</div>
         <div>
-          <h3 style="margin-bottom: 6px; font-size: 17px;">Incorporate Sats for Good Ltd (UK OpCo)</h3>
-          <p style="font-size: 14px; margin: 0;">Companies House registration; sole shareholder = SG HoldCo from the start. Separate from Foundation setup.</p>
+          <h3 style="margin-bottom: 6px; font-size: 20px;">Incorporate Sats for Good Ltd (UK OpCo)</h3>
+          <p style="font-size: 17px; margin: 0;">Companies House registration; sole shareholder = SG HoldCo from the start. Separate from Foundation setup.</p>
         </div>
       </div>
       <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">3</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">3</div>
         <div>
-          <h3 style="margin-bottom: 6px; font-size: 17px;">Incorporate VicariousCore Pte Ltd (SG ConsultingCo)</h3>
-          <p style="font-size: 14px; margin: 0;">Separate Singapore Pte Ltd, 100% founder-owned. Retainer agreement with SG HoldCo for strategic/advisory services. Documented deliverables and rate card.</p>
+          <h3 style="margin-bottom: 6px; font-size: 20px;">Incorporate VicariousCore Pte Ltd (SG ConsultingCo)</h3>
+          <p style="font-size: 17px; margin: 0;">Separate Singapore Pte Ltd, 100% founder-owned. Retainer agreement with SG HoldCo for strategic/advisory services. Documented deliverables and rate card.</p>
         </div>
       </div>
       <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">4</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">4</div>
         <div>
-          <h3 style="margin-bottom: 6px; font-size: 17px;">Register Sats for Good Foundation (UK CIO)</h3>
-          <p style="font-size: 14px; margin: 0;">Charity Commission application (3–6 months). Stone King or Bates Wells instructs. Trustees appointed. Umbrella DAF as fallback if timeline slips.</p>
+          <h3 style="margin-bottom: 6px; font-size: 20px;">Register Sats for Good Foundation (UK CIO)</h3>
+          <p style="font-size: 17px; margin: 0;">Charity Commission application (3–6 months). Stone King or Bates Wells instructs. Trustees appointed. Umbrella DAF as fallback if timeline slips.</p>
         </div>
       </div>
       <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">5</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">5</div>
         <div>
-          <h3 style="margin-bottom: 6px; font-size: 17px;">Commission transfer-pricing study</h3>
-          <p style="font-size: 14px; margin: 0;">Deloitte SG or EY SG engagement. Covers UK OpCo → SG HoldCo licensing fee, plus SG HoldCo → VicariousCore consulting fee. Deliverable before first material intercompany invoice. ~£10–25k; annual refresh.</p>
+          <h3 style="margin-bottom: 6px; font-size: 20px;">Commission transfer-pricing study</h3>
+          <p style="font-size: 17px; margin: 0;">Deloitte SG or EY SG engagement. Covers UK OpCo → SG HoldCo licensing fee, plus SG HoldCo → VicariousCore consulting fee. Deliverable before first material intercompany invoice. ~£10–25k; annual refresh.</p>
         </div>
       </div>
       <div class="card" style="display: flex; gap: 22px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">6</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">6</div>
         <div>
-          <h3 style="margin-bottom: 6px; font-size: 17px;">Services agreements in place</h3>
-          <p style="font-size: 14px; margin: 0;">UK OpCo ↔ UK CIO services agreement (platform + admin fee). UK OpCo ↔ SG HoldCo IP-licensing agreement. SG HoldCo ↔ VicariousCore consulting retainer. All signed before any commercial activity.</p>
+          <h3 style="margin-bottom: 6px; font-size: 20px;">Services agreements in place</h3>
+          <p style="font-size: 17px; margin: 0;">UK OpCo ↔ UK CIO services agreement (platform + admin fee). UK OpCo ↔ SG HoldCo IP-licensing agreement. SG HoldCo ↔ VicariousCore consulting retainer. All signed before any commercial activity.</p>
         </div>
       </div>
     </div>
@@ -1773,7 +1773,7 @@
 
     <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 40px;">
       <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">1</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">1</div>
         <div>
           <h3 style="margin-bottom: 8px;">Obtain written tax-counsel opinion</h3>
           <p>Specialist UK tax counsel engaged. Opinion required on the s.257 application to the full
@@ -1784,7 +1784,7 @@
       </div>
 
       <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">2</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">2</div>
         <div>
           <h3 style="margin-bottom: 8px;">Register the Foundation and seat trustees</h3>
           <p>Sats for Good Foundation incorporated with the Charity Commission as a CIO. Charitable
@@ -1796,7 +1796,7 @@
       </div>
 
       <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">3</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">3</div>
         <div>
           <h3 style="margin-bottom: 8px;">Lock the OTC and banking partnership</h3>
           <p>BCB Group (primary) or Archax (backup) for licensed crypto-to-fiat conversion. Modulr
@@ -1807,7 +1807,7 @@
       </div>
 
       <div class="card" style="display: flex; gap: 28px; align-items: flex-start;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">4</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; font-style: italic; color: var(--gold); line-height: 1; flex-shrink: 0;">4</div>
         <div>
           <h3 style="margin-bottom: 8px;">Private donor cohort</h3>
           <p>Ten to twenty HNW pilot donors identified through founder network. Private beta before any
@@ -2089,7 +2089,7 @@
       The first to commit likely triggers a bidding dynamic that anchors valuation in the upper half of the base range.</p>
     </div>
 
-    <p style="margin-top: 32px; font-size: 13px; color: var(--muted); font-family: 'Inter', sans-serif;">
+    <p style="margin-top: 32px; font-size: 16px; color: var(--muted); font-family: 'Inter', sans-serif;">
       <strong>Sources:</strong>
       <a href="https://public.com/stocks/blkb/market-cap" style="color: var(--muted); text-decoration: underline;">Blackbaud market cap (BLKB)</a> ·
       <a href="https://www.blackbaud.com/newsroom/article/blackbaud-completes-acquisition-of-justgiving" style="color: var(--muted); text-decoration: underline;">Blackbaud–JustGiving £95m acquisition</a> ·
