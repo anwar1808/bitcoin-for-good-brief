@@ -455,7 +455,7 @@
 <!-- ══════════════════════════════════════════════════════════════════ -->
 <header>
   <div class="wrap">
-    <span class="pill-eyebrow"><span class="dot"></span>Confidential Brief · April 2026</span>
+    <span class="pill-eyebrow"><span class="dot"></span>Confidential Brief · May 2026</span>
     <h1>Bitcoin wealth, <em>without the tax friction,</em> into causes that matter.</h1>
     <p class="tagline">
       A UK-native donor-advised fund for crypto philanthropy. Built for hodlers who want their appreciated assets
@@ -546,9 +546,11 @@
 
     <div class="insight">
       <h4>Why this is the moment</h4>
-      <p>UK crypto hodlers accrued an estimated £10bn+ in realised gains in 2025. The annual CGT exempt amount
-      sits at a decade-low £3,000. The tax drag has never been more acute for UK donors — and s.257 TCGA 1992
-      has never been more underused.</p>
+      <p>UK crypto hodlers are sitting on an estimated £8–12bn in embedded unrealised gains entering 2025 —
+      triangulated from HMRC's FY22–23 cryptoasset disposal aggregates, FCA October 2024 crypto-ownership
+      research, and exchange-side balance disclosures. The annual CGT exempt amount sits at a decade-low
+      £3,000. The tax drag has never been more acute for UK donors — and s.257 TCGA 1992 has never been
+      more underused.</p>
     </div>
   </div>
 </section>
@@ -742,8 +744,9 @@
 
     <p class="column" style="margin-top: 20px;">
       The UK HNW crypto-hodling cohort is small but dense, and the overlap with existing charitable intent is
-      higher than in the retail crypto population. What follows is a conservative construction based on
-      Coinbase UK registration data, HMRC crypto-disposal aggregate reporting, and the Charities Aid Foundation (CAF) UK Giving Report.
+      higher than in the retail crypto population. What follows is a conservative bottom-up construction —
+      cohort population, annual giving, and platform-addressable share shown at each layer, with sources and
+      methodology beneath the table.
     </p>
 
     <h3 style="margin-top: 40px;">TAM → SAM → SOM (UK, base case)</h3>
@@ -773,29 +776,100 @@
           <td><strong>SOM — Year 5</strong><br><span style="color: var(--muted); font-size: 16px;">Realistic capture, UK-only</span></td>
           <td class="num">3k–5k</td>
           <td class="num">£10k–£12k</td>
-          <td class="num"><strong>£30–60m/yr</strong></td>
+          <td class="num"><strong>£30–80m/yr</strong></td>
         </tr>
       </tbody>
     </table>
 
-    <h3 style="margin-top: 56px;">Donor segments within the SAM</h3>
-    <div class="grid-3" style="margin-top: 20px;">
+    <div class="insight" style="margin-top: 28px;">
+      <h4>Methodology — bottom-up build</h4>
+      <p style="margin-bottom: 12px;"><strong>TAM population (150–200k).</strong> Triangulated from three
+      directions that converge: (i) FCA October 2024 crypto-research at ~12% UK-adult ownership (~6m total
+      holders), filtered to the top decile by holding size (~600k) using Coinbase UK and Bitpanda UK 2024
+      disclosures on average vs median balance; (ii) Knight Frank Wealth Report HNW count (~620k £1m+
+      households) with a 25–30% crypto-overlap factor; (iii) CAF UK Giving Report HNW-segment
+      charitable-intent filter (~35%).</p>
+      <p style="margin-bottom: 12px;"><strong>SAM filter (20–25% of TAM).</strong> Subset with materially
+      appreciated positions, derived from HMRC's FY22–23 cryptoasset disposal aggregate scaled to 2024
+      holdings.</p>
+      <p style="margin-bottom: 0;"><strong>Volume column — what it represents.</strong> At TAM and SAM, the
+      number is the cohort's <em>total annual charitable giving</em> (across all asset classes), of which only
+      a fraction is plausibly crypto-routed: ~10–20% at TAM, ~30–50% at SAM (appreciated crypto becomes the
+      rational gifting asset). At SOM Y5, the number is platform-captured volume — what Bitcoin for Good
+      actually processes — at the low end of US benchmarks for crypto-routed HNW giving.</p>
+    </div>
+
+    <div class="callout" style="margin-top: 28px;">
+      <p><strong>The shape of the volume.</strong> US benchmarks (The Giving Block, Engiven 2021–2024) show
+      ~80% of crypto-donation volume from &lt;5% of donors — one to three anchor gifts per year typically drive
+      over half of platform throughput. Y5 SOM is therefore modelled as two distinct populations:</p>
+      <p style="margin-bottom: 0;"><strong>Anchor gifts</strong> — 5–15 donors/yr at £100k–£1m+ = <strong>£3–10m/yr</strong>. Concierge-led acquisition.<br>
+      <strong>Long-tail</strong> — 3–5k donors/yr at £5–15k = <strong>£25–60m/yr</strong>. Self-serve.</p>
+      <p style="margin: 12px 0 0 0;">The shape bounds Year-1–2 variance — a single anchor gift can move the
+      year — and drives GTM design: concierge for whales, product-led for the long tail.</p>
+    </div>
+
+    <h3 style="margin-top: 56px;">Five addressable buyer groups</h3>
+    <p class="column">
+      The HNW individual cohort sized above is the core, but it is not the entire market. Four other distinct
+      buyer groups have material crypto exposure and unmet charitable-giving needs. Each carries its own
+      product wedge, acquisition path, and unit economics. The same UK regulatory rails (CIO, OTC, FCA s.21,
+      Charity Commission) serve all five — so adding a segment is product surface work, not new regulatory
+      build.
+    </p>
+
+    <div class="grid-3" style="margin-top: 28px;">
+
       <div class="card">
-        <h3>HNW hodlers with gain-heavy positions</h3>
-        <p>The core segment. Bought BTC/ETH between 2015–2020, sitting on substantial unrealised gains. Annual
-        charitable giving is already £5–20k. Primary motivation: tax efficiency + ease.</p>
+        <h3>1. HNW individuals <span class="badge badge-gold" style="margin-left: 6px;">Core</span></h3>
+        <p>The TAM/SAM cohort sized above. Three sub-segments inside: gain-heavy hodlers (BTC/ETH 2015–2020),
+        religiously-motivated givers (Muslim zakat, Christian regular giving), and privacy-first donors of
+        any motivation who decline identity exposure to the receiving charity.</p>
+        <p style="font-size: 17px; margin-top: 10px;"><strong>UK SAM:</strong> £300–500m/yr · <strong>Y5 SOM:</strong> £30–80m</p>
       </div>
+
       <div class="card">
-        <h3>Religiously-motivated givers</h3>
-        <p>UK Muslim community with crypto holdings paying annual zakat (~£300–500m market, ~40% HNW overlap);
-        UK Christian donors with an ongoing-giving practice. Primary motivation: obligation fulfilled cleanly,
-        anonymity preserved.</p>
+        <h3>2. DAOs / Web3 treasuries</h3>
+        <p>Decentralised organisations and crypto-native cooperatives running governance-allocated charitable
+        grants from treasury. Established precedent at Uniswap, Optimism, ENS, MakerDAO. Need compliance-grade
+        UK disbursement, audit trail, and donor-side privacy.</p>
+        <p style="font-size: 17px; margin-top: 10px;"><strong>UK-relevant:</strong> 20–50 entities, £500m+ aggregate treasury · <strong>Y3 revenue:</strong> £500k–2m</p>
       </div>
+
       <div class="card">
-        <h3>Privacy-first HNW donors</h3>
-        <p>Donors — crypto-native or otherwise — who give meaningfully but decline to have their identity
-        visible to the receiving charity. Under-served by every existing UK platform.</p>
+        <h3>3. Crypto VCs / funds with realised gains</h3>
+        <p>UK-domiciled crypto-focused VCs and hedge funds with lumpy carry events. Fund-level gift relief
+        works on the same s.257 mechanic at a different scale. Carry holders face large personal CGT events
+        that the platform cleanly resolves.</p>
+        <p style="font-size: 17px; margin-top: 10px;"><strong>UK-relevant:</strong> 10–20 fund GP/LP entities · <strong>Y3 revenue:</strong> £500k–2m</p>
       </div>
+
+      <div class="card">
+        <h3>4. Crypto-native corporates</h3>
+        <p>Exchanges, market makers, custodians, treasury-allocating corporates. Donate appreciated treasury
+        crypto to offset corporate gains; ESG narrative for the brand. Established models at Coinbase Giving,
+        Kraken Charities, Block Giving — UK adaptations of those programmes are the entry surface.</p>
+        <p style="font-size: 17px; margin-top: 10px;"><strong>UK-relevant:</strong> 30–80 corporates with material treasury · <strong>Y3 revenue:</strong> £500k–1.5m</p>
+      </div>
+
+      <div class="card">
+        <h3>5. Religious-giving communities</h3>
+        <p>UK Muslim community paying annual zakat on crypto holdings (estimated UK Muslim zakat ~£200–400m
+        annual giving; HNW segment with crypto exposure ~£50–100m); UK Christian regular givers; UK Jewish
+        Tzedakah donors. Wedge is Sharia-certified routing, Christian-aligned receipt language, and structural
+        anonymity for cultural giving traditions. Extends beyond the HNW cohort into mid-tier mass-affluent.</p>
+        <p style="font-size: 17px; margin-top: 10px;"><strong>Crypto-relevant cohort across all three traditions:</strong> £80–150m/yr · <strong>Y5 routed:</strong> £15–30m</p>
+      </div>
+
+      <div class="card" style="background: var(--surface2);">
+        <h3>Across all five</h3>
+        <p>Same regulatory stack, differentiated product surfaces and distribution channels (see Section 05).
+        Segments 2–5 add an estimated <strong>£20–50m UK Y5 revenue incremental</strong> on top of the HNW Core
+        — and sit <em>alongside</em>, not within, the revenue projections in the table below, which model
+        Segment 1 only. The five-segment view is the fuller addressable picture; the projections are the
+        conservative-anchor view.</p>
+      </div>
+
     </div>
 
     <h3 style="margin-top: 56px;">Revenue projections — UK only</h3>
@@ -827,8 +901,12 @@
     </div>
 
     <h3 style="margin-top: 56px;">Revenue projections — UK + phased geographies</h3>
-    <p class="column">Canada added Y2, UAE Y3, Singapore Y4, Australia + US Y5. Each market carries its own
-    value proposition (detailed in Section 11).</p>
+    <p class="column">UAE Y2 (2027), Canada + Singapore Y3 (2028), Switzerland + Channel Islands Y4 (2029) for
+    the six-market B2C platform. US enters Y3 (2028) as B2B-only — partnership and licensing, not a B2C
+    platform — and is additive to the volume below. Each market carries its own wedge (detailed in Section
+    11). Each added B2C market is modelled with a phased ramp — first-year-of-operation throughput at 25–40%
+    of trajectory run-rate — reflecting regulatory onboarding, OTC and banking-rail setup, and donor
+    acquisition lead time.</p>
 
     <div class="grid-3" style="margin-top: 20px;">
       <div class="scenario bear">
@@ -843,7 +921,7 @@
         <div class="scenario-row"><span>Y1 volume</span><span>£2m</span></div>
         <div class="scenario-row"><span>Y3 volume</span><span>£35m</span></div>
         <div class="scenario-row"><span>Y5 volume</span><span>£180m</span></div>
-        <div class="scenario-row"><span>Y5 revenue</span><span>£8m</span></div>
+        <div class="scenario-row"><span>Y5 revenue</span><span>£8.3m</span></div>
       </div>
       <div class="scenario bull">
         <div class="scenario-label">Bull · 6 markets</div>
@@ -854,13 +932,23 @@
       </div>
     </div>
 
+    <div class="insight" style="margin-top: 32px;">
+      <h4>Benchmark — The Giving Block (US)</h4>
+      <p>Peak processing volume <strong>$125m in 2021</strong>; current run-rate ~$50m. The UK 6-market base
+      case (£180m Y5) approaches TGB's all-time peak on a ~1/3 donor base — supported by a structurally
+      stronger product surface: s.257 extinguishment vs. US FMV deduction, native UK tax-rail, privacy by
+      default, and charity-agnostic disbursement to ~170k UK charities. The UK-only bull (£70m) sits
+      comfortably inside TGB's current run-rate; the 6-market bull (£450m) is ~3.5× TGB peak, supported by
+      five additional markets.</p>
+    </div>
+
     <div class="grid-4" style="margin-top: 44px;">
       <div class="stat">
         <div class="stat-value">£180<em>m</em></div>
         <div class="stat-label">Base Y5 volume</div>
       </div>
       <div class="stat">
-        <div class="stat-value">£8<em>m</em></div>
+        <div class="stat-value">£8.3<em>m</em></div>
         <div class="stat-label">Base Y5 revenue</div>
       </div>
       <div class="stat">
@@ -868,7 +956,7 @@
         <div class="stat-label">Markets by 2030</div>
       </div>
       <div class="stat">
-        <div class="stat-value">55<em>%</em></div>
+        <div class="stat-value">66<em>%</em></div>
         <div class="stat-label">Base Y5 EBITDA margin</div>
       </div>
     </div>
@@ -957,7 +1045,156 @@
       </div>
     </div>
 
-    <div class="callout" style="margin-top: 44px;">
+    <h3 style="margin-top: 56px;">Distribution stack — where donors actually arrive</h3>
+    <p class="column" style="margin-top: 14px;">
+      Revenue compounds only if donors find the product at the moment they're thinking about a gift, not later
+      via a Google search. The distribution stack has three layers, all filtered for crypto-relevance —
+      surfaces where users already manage crypto, advisor channels that serve crypto-rich clients, and
+      community channels with crypto-native audiences. Generic charity-tech and mass-market financial advice
+      are deliberately excluded: their user bases aren't crypto-rich enough to justify the partnership cost.
+    </p>
+
+    <h4 style="margin-top: 32px; color: var(--text);">Layer 1 — Embedded distribution ("donate instead of sell" at the disposal moment)</h4>
+    <table style="margin-top: 14px;">
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>Named partners</th>
+          <th>Crypto-relevance</th>
+          <th>Revenue model</th>
+          <th class="num">Y3 potential</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Crypto tax software</strong></td>
+          <td>Koinly, Divly, Accointing, CoinTracker, CoinLedger, ZenLedger, Recap</td>
+          <td>100% — users have crypto + active tax events by definition</td>
+          <td>Rev-share 30–50% of platform fee</td>
+          <td class="num">£1–3m</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto wallets</strong></td>
+          <td>Ledger Live, Trezor Suite, MetaMask, Phantom, Trust Wallet</td>
+          <td>100% — users hold crypto natively; wallet is the asset surface</td>
+          <td>Rev-share + per-tx fee</td>
+          <td class="num">£500k–2m</td>
+        </tr>
+        <tr>
+          <td><strong>UK crypto exchanges</strong></td>
+          <td>CoinCorner, Bitpanda UK, Kraken UK, Coinbase UK</td>
+          <td>100% — captive UK HNW base with active CGT exposure; KYC already done</td>
+          <td>Rev-share</td>
+          <td class="num">£1–3m</td>
+        </tr>
+        <tr>
+          <td><strong>s.257-fluent tax counsel + crypto-tax specialists</strong></td>
+          <td>RPC, Carter Backer Winter, KPMG Tax, Wright Vigar, Andersen Tax UK, Recap</td>
+          <td>High — the s.257-fluent firms already engaged for the launch tax opinion; specialist crypto-tax firms have 100% crypto-rich books</td>
+          <td>"Verified route" listing + small referral honorarium (advisors won't accept trail commissions)</td>
+          <td class="num">£300k–700k</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto-native accounting / treasury software</strong></td>
+          <td>Cryptio, Bitwave, Lukka, TaxBit Enterprise</td>
+          <td>100% — purpose-built for crypto-native UK companies with treasury crypto. (Xero / QuickBooks / Sage explicitly excluded: &lt;1% of their users hold treasury crypto.)</td>
+          <td>SaaS + per-tx</td>
+          <td class="num">£200k–600k</td>
+        </tr>
+        <tr>
+          <td><strong>UK will / estate platforms</strong></td>
+          <td>Farewill, Octopus Legacy</td>
+          <td>Medium — UK bequest market is £3.4bn/yr; crypto bequests are a known executor pain point. UK-native only (Trust &amp; Will / FreeWill are US).</td>
+          <td>Per-bequest fee + match-funding</td>
+          <td class="num">£200k–500k</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top: 36px; color: var(--text);">Layer 2 — B2B SaaS to the UK charity sector</h4>
+    <p class="column" style="font-size: 18px;">
+      The UK's top 100 charities all want crypto capability and none have it. White-label crypto donation page
+      on our rails, branded as the partner charity. £500–£5k/mo SaaS plus transaction fee. Inbound demand
+      driven by the partner charity's own donor base; near-zero customer acquisition cost on our side. Top-50
+      conversion at ~60% over Y2–Y3 yields ~£360k/yr SaaS plus the transaction volume those charities route
+      through us. <strong>Y3 total revenue: £1–3m</strong>, high margin, with the operational benefit that
+      every white-label charity becomes a defensive moat — the next platform that arrives has to displace us.
+    </p>
+
+    <h4 style="margin-top: 36px; color: var(--text);">Layer 3 — Channel partnerships (concierge access to anchor-gift donors)</h4>
+    <table style="margin-top: 14px;">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Named partners</th>
+          <th>Crypto-relevance</th>
+          <th>Revenue model</th>
+          <th class="num">Y3 potential</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>UK private banks (concierge / anchor-gift channel)</strong></td>
+          <td>Coutts, Hoare, Cazenove, Rothschild Wealth, Brown Shipley</td>
+          <td>5–15% of UHNW book is crypto-rich — exactly the anchor-gift segment from Section 04. Not a volume channel: 5–15 gifts/yr at £100k–£1m+ each.</td>
+          <td>Rev-share on routed gifts</td>
+          <td class="num">£500k–1.5m</td>
+        </tr>
+        <tr>
+          <td><strong>Trust companies</strong></td>
+          <td>Stonehage Fleming, Bedell Cristin, Mourant</td>
+          <td>Niche — UHNW family trusts occasionally hold crypto; charitable distributions are routine in their service.</td>
+          <td>Rev-share + structural advisory fee</td>
+          <td class="num">£200k–600k</td>
+        </tr>
+        <tr>
+          <td><strong>Family-office tech</strong></td>
+          <td>Addepar, Masttro</td>
+          <td>Strong — these platforms aggregate UHNW crypto positions; the donate surface lives at the advisor's screen. Addepar explicitly supports crypto-asset reporting.</td>
+          <td>Rev-share + integration fee</td>
+          <td class="num">£400k–1m</td>
+        </tr>
+        <tr>
+          <td><strong>Crypto-native UK communities</strong></td>
+          <td>UK Bitcoin Collective, Real Bitcoin Club London, Bitcoin Policy UK</td>
+          <td>100% crypto-native by definition</td>
+          <td>Community sponsorship + affiliate code</td>
+          <td class="num">£100k–300k (high LTV per acquired donor)</td>
+        </tr>
+        <tr>
+          <td><strong>Tech-founder networks</strong></td>
+          <td>YC UK alumni, Entrepreneur First, Founders Forum</td>
+          <td>Medium-high — high crypto-ownership rate in this population, especially Web3 / fintech-adjacent founders</td>
+          <td>Curated sessions → anchor-gift conversion</td>
+          <td class="num">£200k–600k</td>
+        </tr>
+        <tr>
+          <td><strong>UK Bitcoin podcasters / writers</strong></td>
+          <td>What Bitcoin Did (Peter McCormack), Bitcoin Magazine UK, founder-network amplifiers</td>
+          <td>100% — audience is by definition crypto-active</td>
+          <td>Sponsored segments + affiliate referral</td>
+          <td class="num">£100k–300k</td>
+        </tr>
+        <tr>
+          <td><strong>Accreditation / legitimacy partners</strong></td>
+          <td>UK Sharia advisory boards, Muslim Charities Forum, equivalent Christian-giving bodies</td>
+          <td>These don't drive volume directly — they grant <em>permission</em> for religious-giving products (zakat, waqf)</td>
+          <td>No direct revenue</td>
+          <td class="num">Unlocks £500k–2m elsewhere</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight" style="margin-top: 32px;">
+      <h4>Combined Y3 incremental revenue from the distribution stack</h4>
+      <p>Layer 1 (embedded) ~£3.2–9.8m + Layer 2 (B2B SaaS) ~£1–3m + Layer 3 (channels) ~£1.5–4.3m =
+      <strong>£5.7–17.1m Y3 incremental revenue, all UK-only</strong>. By comparison, adding two additional
+      geographic markets at Y3–Y4 as B2C platforms yields perhaps £2–5m incremental at maturity, with
+      significantly higher regulatory and operational cost. The distribution stack is the bigger lever per
+      pound invested.</p>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
       <p><strong>Revenue structure, not revenue promise.</strong> The stack is designed so that adjacent
       streams add ~30% to core fee revenue by Year 3, rising to ~40% by Year 5. Full cost structure and
       profitability modelling is in Appendix A.</p>
@@ -1195,9 +1432,10 @@
         <div>
           <h3>Charity Commission CIO registration</h3>
           <p>Sats for Good Foundation, approved with a clear cryptoasset-receiving charitable objects clause.
-          Charity Commission pre-registration engagement (free) precedes the formal application so the novel
-          objects clause and Ltd–Foundation services model surface to the Commission early. 3–6 months of review.
-          No shortcut; competitors must wait the same.</p>
+          The Commission does not pre-engage on novel structures — the application stands on its own contents,
+          and a credibly-drafted package depends on the right trustee bench, a defensible services agreement,
+          and the tax-counsel opinion already in hand at filing. 3–6 months of casework review. No shortcut;
+          competitors must assemble the same package and wait the same.</p>
         </div>
       </div>
       <div class="moat-item">
@@ -1384,8 +1622,9 @@
       </div>
       <div class="card">
         <h3>CIO registration <span class="badge badge-gold" style="margin-left: 8px;">In progress</span></h3>
-        <p>Charitable Incorporated Organisation via Charity Commission. 3–6 month approval. Umbrella DAF
-        (Prism the Gift Fund, NPT UK) identified as fallback if timeline slips.</p>
+        <p>Charitable Incorporated Organisation via Charity Commission. One-shot application; 3–6 month
+        casework review. Umbrella DAF (Prism the Gift Fund, NPT UK) runs in parallel as a launch path that
+        lets volume start while the CIO sits in the queue.</p>
       </div>
       <div class="card">
         <h3>Financial promotions <span class="badge badge-moss" style="margin-left: 8px;">Approver engaged</span></h3>
@@ -1838,93 +2077,216 @@
     <h2>The product <em>compounds.</em></h2>
 
     <p class="column" style="margin-top: 20px;">
-      UK launch in 2026 is the beachhead. Growth runs along two vectors: product (adjacent features on the
-      same platform) and geography (replicating the full stack in ordered markets). Each geography has its
-      own local moat, built with the same pattern but tuned to the local tax and regulatory reality.
+      UK launch in 2026 is the beachhead. Growth runs along three compounding vectors: <strong>product</strong>
+      (adjacent features and Horizons, below), <strong>distribution</strong> (embedded surfaces, B2B SaaS, and
+      channel partnerships — detailed in Section 05), and <strong>geography</strong> (replicating the rail in
+      ordered markets, next). The distribution vector is the largest UK-only growth lever per pound invested;
+      this section covers the geographic vector.
     </p>
 
-    <h3 style="margin-top: 48px;">Geographic expansion</h3>
-    <p class="column">Markets split into two groups by how the value proposition lands locally.</p>
+    <h3 style="margin-top: 48px;">Geographic expansion — four wedge archetypes</h3>
+    <p class="column">
+      Outside the UK, s.257 extinguishment does not exist. Each market must lead with its own wedge — and that
+      wedge is rarely a tax-relief argument. Four archetypes recur across candidate markets; most fit one or
+      two, and a handful (UAE, Singapore) fit three.
+    </p>
 
-    <h4 style="margin-top: 32px; color: var(--text);">Tax-efficiency markets</h4>
-    <table style="margin-top: 12px;">
+    <div class="grid-2" style="margin-top: 28px;">
+
+      <div class="card">
+        <h3>i. Tax-mitigation markets <span class="badge badge-gold" style="margin-left: 6px;">UK · Canada · Australia</span></h3>
+        <p>Markets with CGT regimes and statutory charitable-gift relief. Wedge mirrors UK at the structural
+        level — capital-gains extinguishment on appreciated gifts to qualifying charities — using each
+        jurisdiction's own statute. UK: s.257 TCGA 1992. Canada: s.38(a.1) ITA, "qualifying capital property"
+        zero-inclusion rate. Australia: DGR framework with CGT-event offset. Same product, different local
+        statute, same donor motivation: tax efficiency + ease.</p>
+      </div>
+
+      <div class="card">
+        <h3>ii. Religious-obligation markets <span class="badge badge-moss" style="margin-left: 6px;">UAE · Singapore · Saudi · Malaysia · Indonesia</span></h3>
+        <p>0%-CGT markets where the tax pitch is null. Wedge is religious-obligation fulfilment for the Muslim
+        cohort — Sharia-certified zakat infrastructure for crypto holdings (2.5% of qualifying assets annually,
+        lunar-calendar timed), and waqf-compatible perpetual endowment rails. Sharia-board accreditation is
+        the regulatory gate, not the tax authority. Christian (Tzedakah for Jewish, tithing for Christian)
+        equivalents exist in adjacent markets but are smaller addressable.</p>
+      </div>
+
+      <div class="card">
+        <h3>iii. Privacy-architecture markets <span class="badge badge-claret" style="margin-left: 6px;">Switzerland · Channel Islands · Germany</span></h3>
+        <p>Markets with no CGT (or a narrow-window CGT) but strong privacy culture and HNW density. Wedge is
+        the same structural anonymity that the Foundation-as-legal-recipient pattern produces in the UK —
+        donor identity never reaches the receiving charity by structural necessity. Resonates with donor
+        populations who already use trust structures, banking secrecy, or post-WWII privacy norms.
+        Switzerland and Crown Dependencies: 0% personal CGT. Germany: 0% after 12-month hold, with secondary
+        short-hold-mitigation use case inside the window.</p>
+      </div>
+
+      <div class="card">
+        <h3>iv. Cross-border expat-philanthropy markets <span class="badge badge-gold" style="margin-left: 6px;">UAE · Singapore · Hong Kong · Switzerland</span></h3>
+        <p>Markets with dense expat-HNW populations giving to home-country charities. Wedge is multi-currency,
+        multi-jurisdiction charity routing — a Pakistani expat in Dubai giving to a Pakistani charity, a UK
+        expat in Singapore giving to a UK charity, a German in Geneva giving to a German charity. Single KYC,
+        single platform, multiple destination jurisdictions. Compounds with the religious-obligation wedge in
+        Muslim markets and the privacy wedge in Switzerland.</p>
+      </div>
+
+    </div>
+
+    <h3 style="margin-top: 56px;">The revised roadmap</h3>
+    <p class="column">
+      Reordered by (opportunity size × structural wedge × regulatory cost). UAE promoted ahead of Canada
+      because the religious-obligation wedge is structurally stronger than a tax-mitigation copy of the UK
+      mechanic. Switzerland and Channel Islands added on the basis of privacy + HNW density. US repositioned
+      as B2B-only (next sub-section). Australia and Germany held as Y5 watch markets.
+    </p>
+    <table style="margin-top: 20px;">
       <thead>
         <tr>
           <th>Market</th>
           <th>Year</th>
-          <th>Local tax hook</th>
+          <th>Wedge archetypes</th>
           <th>Local moat</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>United Kingdom</strong></td>
-          <td class="num">2026</td>
-          <td>s.257 TCGA 1992 — no-gain/no-loss gift to charity</td>
+          <td class="num">2026 · Y1</td>
+          <td>Tax-mitigation (s.257)</td>
           <td>See Section 07</td>
         </tr>
         <tr>
+          <td><strong>UAE</strong></td>
+          <td class="num">2027 · Y2</td>
+          <td>Religious-obligation + cross-border expat</td>
+          <td>DIFC/ADGM charitable foundation + Sharia board sign-off + VARA registration · strongest non-UK moat</td>
+        </tr>
+        <tr>
           <td><strong>Canada</strong></td>
-          <td class="num">2027</td>
-          <td>Gift-of-securities precedent, CRA crypto disposal</td>
-          <td>CRA tax opinion + Canadian Registered Charity + federal banking (~3 months)</td>
+          <td class="num">2028 · Y3</td>
+          <td>Tax-mitigation (s.38(a.1) ITA)</td>
+          <td>CRA tax opinion + Canadian Registered Charity + federal banking · bilingual compliance (Quebec) is a secondary moat</td>
+        </tr>
+        <tr>
+          <td><strong>Singapore</strong></td>
+          <td class="num">2028 · Y3</td>
+          <td>Religious-obligation + cross-border expat + family-office hub</td>
+          <td>IPC status + MAS licensing + MUIS partnership · family-office tax-incentive integration (13O/13U)</td>
+        </tr>
+        <tr>
+          <td><strong>Switzerland</strong></td>
+          <td class="num">2029 · Y4</td>
+          <td>Privacy-architecture + cross-border expat (European HNW)</td>
+          <td>Swiss foundation registration + FINMA introducer arrangement · Geneva private-bank partnership</td>
+        </tr>
+        <tr>
+          <td><strong>Channel Islands / Crown Dependencies</strong></td>
+          <td class="num">2029 · Y4</td>
+          <td>Privacy-architecture + trust-structure integration</td>
+          <td>Jersey/Guernsey/IOM charitable foundation + trust-company integration · niche but high-value per donor</td>
         </tr>
         <tr>
           <td><strong>Australia</strong></td>
-          <td class="num">2029</td>
-          <td>DGR (Deductible Gift Recipient) framework</td>
-          <td>DGR status + ATO opinion + AUSTRAC registration (~4 months)</td>
+          <td class="num">2030 · Y5 watch</td>
+          <td>Tax-mitigation (DGR)</td>
+          <td>DGR + ATO opinion + AUSTRAC registration · proceed only if Y3–Y4 capacity allows; opportunity real but not differentiated</td>
         </tr>
         <tr>
+          <td><strong>Germany</strong></td>
+          <td class="num">2030 · Y5 watch</td>
+          <td>Privacy + short-hold CGT mitigation</td>
+          <td>Gemeinnützige Stiftung + BaFin financial-promotion clearance · charity sector is conservative</td>
+        </tr>
+        <tr style="background: var(--surface2);">
           <td><strong>United States</strong></td>
-          <td class="num">2030</td>
-          <td>IRS fair-market-value deduction for long-held crypto</td>
-          <td>501(c)(3) + IRS determination letter + state-by-state solicitation registration · weakest moat, most competitive</td>
+          <td class="num">2028 · Y3 — B2B only</td>
+          <td>Partnership / licensing only</td>
+          <td>See sub-section below</td>
+        </tr>
+        <tr>
+          <td><em>Stretch (Y5+)</em></td>
+          <td class="num">—</td>
+          <td>Israel (Tzedakah + tech-founder), Saudi/Malaysia/Indonesia (zakat), Hong Kong (cross-border + privacy)</td>
+          <td>Watch list; entry contingent on Y3–Y4 platform stability</td>
         </tr>
       </tbody>
     </table>
 
-    <h4 style="margin-top: 40px; color: var(--text);">Convenience &amp; religious-integration markets</h4>
-    <p class="column">0% CGT markets where the tax-saving pitch is null; value proposition shifts to seamless
-    crypto-to-charity plumbing, high-quality receipts, and religious-giving infrastructure.</p>
-    <table style="margin-top: 12px;">
+    <h3 style="margin-top: 56px;">United States — B2B only, not B2C</h3>
+    <p class="column">
+      The US opportunity is large. US crypto-philanthropy peaked at ~$500m–1bn/yr; the addressable market is
+      ~10–20× the UK. But B2C entry would put us as the sixth platform in a contested category where the UK
+      structural wedge doesn't translate. US already has FMV deduction (table stakes, not differentiation);
+      donor anonymity is partial because of state-level disclosure rules; DAFs are mature. Direct competition
+      with The Giving Block, Engiven, Endaoment, Fidelity Charitable, and Crypto for Charity for a wedge
+      that's already partially solved.
+    </p>
+    <p class="column">
+      The smart US play is B2B partnership and licensing — high margin, low risk, faster to revenue, none of
+      the cost of building a US donor base from cold.
+    </p>
+    <table style="margin-top: 20px;">
       <thead>
         <tr>
-          <th>Market</th>
-          <th>Year</th>
-          <th>Local value proposition</th>
-          <th>Local moat</th>
+          <th>Mode</th>
+          <th>Mechanic</th>
+          <th class="num">Risk</th>
+          <th class="num">Speed to revenue</th>
+          <th class="num">Y5 potential</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>UAE</strong></td>
-          <td class="num">2028</td>
-          <td>Frictionless crypto zakat; waqf-compatible perpetual endowment rails; access to global charity catalogue</td>
-          <td>DIFC/ADGM charitable foundation + Sharia board sign-off + VARA registration · strongest non-UK moat</td>
+          <td><strong>Privacy-layer licensing</strong></td>
+          <td>Sell the Foundation-as-legal-recipient + KYC-isolation pattern to US platforms (The Giving Block, Endaoment) as a white-label privacy upgrade</td>
+          <td class="num">Low</td>
+          <td class="num">6–12 months</td>
+          <td class="num">£500k–2m</td>
         </tr>
         <tr>
-          <td><strong>Singapore</strong></td>
-          <td class="num">2029</td>
-          <td>IPC-status giving for crypto-native HNW; MUIS-aligned zakat integration</td>
-          <td>IPC status + MAS licensing + MUIS partnership</td>
+          <td><strong>Cross-border donor pathway</strong></td>
+          <td>UK donor → US 501(c)(3); US donor → UK charity. Both routed through dual-rail compliance. Niche but unique to Bitcoin for Good.</td>
+          <td class="num">Low-medium</td>
+          <td class="num">12–18 months</td>
+          <td class="num">£1–3m</td>
+        </tr>
+        <tr>
+          <td><strong>Compliance-as-a-service</strong></td>
+          <td>License the s.257-equivalent infrastructure (donor-side KYC, charity-side disbursement, audit trail) to US DAFs and crypto-native charities</td>
+          <td class="num">Low</td>
+          <td class="num">12 months</td>
+          <td class="num">£200k–1m per partner; 3–5 partners by Y5 = £1–4m</td>
+        </tr>
+        <tr style="background: var(--gold-soft);">
+          <td><strong>Combined US B2B revenue</strong></td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="num"><strong>£2.5–9m by Y5</strong></td>
         </tr>
       </tbody>
     </table>
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      Compare against B2C US entry: ~£300k regulatory and operational setup before first donation (501(c)(3) +
+      state-by-state solicitation registration + IRS determination letter + US KYC + US banking); 24–36 months
+      to material revenue; competing against five entrenched incumbents for a partially-solved wedge.
+    </p>
 
     <h3 style="margin-top: 56px;">Product expansion — three horizons</h3>
 
     <div style="margin-top: 24px;">
       <h4 style="color: var(--text);">Horizon 1 · Year 1–2</h4>
+      <p style="font-size: 17px; color: var(--muted); margin-top: 6px; font-family: 'Inter', sans-serif;">Donor-facing product features. Acquisition surfaces (embedded distribution into Koinly, Ledger, exchanges) are detailed separately in Section 05.</p>
       <div class="grid-3" style="margin-top: 12px;">
         <div class="card">
-          <h3>Koinly / Divly plugin</h3>
-          <p>"Donate instead of sell" button at the tax-loss harvesting moment. API-licensed. Highest-intent
-          distribution channel.</p>
+          <h3>Donor dashboard</h3>
+          <p>Lifetime giving across all gifts, total CGT saved, charity impact reports rolling in, blockchain
+          confirmation receipts archived. Closes the loop and lifts donor LTV.</p>
         </div>
         <div class="card">
-          <h3>Wallet integrations</h3>
-          <p>Donate button inside Ledger Live, Trezor Suite, MetaMask snap. Point of highest donation intent.</p>
+          <h3>Tax-receipt + self-assessment helper</h3>
+          <p>Auto-generated receipt with FMV at confirmation and blockchain hash, plus a pre-formatted entry for
+          the donor's CGT self-assessment. Reduces compliance friction and surfaces the tax saving on every gift.</p>
         </div>
         <div class="card">
           <h3>Community cause funds</h3>
@@ -2012,104 +2374,421 @@
 <section id="s12">
   <div class="wrap">
     <span class="label">12 — Exit</span>
-    <h2>Year 5 has <em>four natural buyers.</em></h2>
+    <h2>Year 5 has <em>five natural buyers.</em></h2>
 
     <p class="column" style="margin-top: 20px;">
-      Year-5 base case: £180m annual donation volume, £8m revenue, ~60% EBITDA margin. That profile is
-      attractive to four categories of acquirer, each with a distinct logic. The platform is designed to be
-      acquirable from day one — clean corporate structure, separable revenue streams, defensible charity
-      rails that transfer with the company.
+      Year-5 base case: £180m annual donation volume, £8.3m revenue, <strong>£5.5m EBITDA (66% margin)</strong>.
+      That profile is attractive to five categories of acquirer, each with a distinct logic. Strategic
+      acquirers underwrite from EBITDA; crypto-native acquirers underwrite from revenue and growth. The
+      valuation lens below shows both.
+    </p>
+    <p class="column">
+      Multiples are triangulated three ways: against recent comparable transactions in charity-tech and
+      crypto-fintech, against trading-comp multiples for public adjacents, and against a discounted-cash-flow
+      intrinsic value. The bands sit at the median of all three — meaningfully above what a financial buyer
+      alone would pay, meaningfully below the 2021–22 crypto-frenzy outliers.
     </p>
 
-    <table style="margin-top: 32px;">
+    <h3 style="margin-top: 56px;">The buyer set</h3>
+    <table style="margin-top: 20px;">
       <thead>
         <tr>
           <th>Acquirer category</th>
           <th>Named candidates</th>
           <th>Acquisition logic</th>
-          <th>Multiple</th>
+          <th class="num">EV / Revenue</th>
+          <th class="num">EV / EBITDA</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Charity infrastructure</strong></td>
-          <td>Charities Aid Foundation (CAF) — via commercial subsidiary; Blackbaud (parent of JustGiving); Benevity</td>
+          <td>JustGiving (Blackbaud), Benevity, Classy / GoFundMe</td>
           <td>Instant crypto capability, HNW donor acquisition, modernisation narrative</td>
-          <td class="num">4–8× revenue</td>
+          <td class="num">5–9×</td>
+          <td class="num">12–18×</td>
         </tr>
         <tr>
           <td><strong>Crypto financial services</strong></td>
-          <td>Revolut, Coinbase Ventures, Circle, Kraken, a major UK-licensed exchange</td>
-          <td>ESG and brand, captive donor base, regulatory goodwill in home market</td>
-          <td class="num">12–20× revenue</td>
+          <td>Coinbase Inc., Kraken, Bitpanda, a UK-licensed exchange</td>
+          <td>UK regulatory goodwill, ESG narrative, captive donor base, brand</td>
+          <td class="num">8–14×</td>
+          <td class="num">18–25×</td>
         </tr>
         <tr>
-          <td><strong>Private bank / wealth manager</strong></td>
-          <td>HSBC Private Bank, Schwab Charitable UK, St James's Place</td>
-          <td>Cross-sell to HNW clients; tax-efficient giving as a product line</td>
-          <td class="num">8–12× revenue</td>
+          <td><strong>Wealth platform / family-office tech</strong></td>
+          <td>FNZ, Addepar, Masttro, SS&amp;C</td>
+          <td>HNW tax-efficient giving as embedded feature; consolidation of HNW infrastructure</td>
+          <td class="num">6–10×</td>
+          <td class="num">14–20×</td>
         </tr>
         <tr>
-          <td><strong>Payments consolidator</strong></td>
-          <td>Stripe (philanthropy), Wise, Adyen</td>
+          <td><strong>Payments / charitable rails</strong></td>
+          <td>Stripe.org, Adyen Giving, Wise Business charitable</td>
           <td>Category expansion into charity rails; cross-border giving integration</td>
-          <td class="num">10–15× revenue</td>
+          <td class="num">8–14×</td>
+          <td class="num">18–25×</td>
+        </tr>
+        <tr>
+          <td><strong>PE charity-tech rollup</strong></td>
+          <td>Hg Capital, Vista Equity, Bain Capital, Inflexion</td>
+          <td>Platform asset in a fragmenting category; rollup with adjacent UK charity-tech holdings</td>
+          <td class="num">7–10×</td>
+          <td class="num">14–22×</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      Charities Aid Foundation (CAF) is deliberately positioned as a strategic <em>partner / licensing channel</em>
+      rather than an acquirer. CAF's historical M&amp;A is partnership-based, not equity; their participation
+      is more likely to take the form of a commercial licensing deal that, if announced, forces JustGiving's
+      hand competitively.
+    </p>
+
+    <h3 style="margin-top: 56px;">Comparable transactions</h3>
+    <p class="column" style="margin-top: 14px;">
+      Five recent precedents that anchor the multiples above. Median strategic precedent in this category is
+      5–8× revenue / 14–18× EBITDA. The 2021–22 crypto-frenzy outliers (The Giving Block) have since reset.
+    </p>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Deal</th>
+          <th>Year</th>
+          <th class="num">EV</th>
+          <th class="num">EV / Revenue</th>
+          <th class="num">EV / EBITDA</th>
+          <th>Context</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>The Giving Block → Shift4</strong></td>
+          <td class="num">2022</td>
+          <td class="num">~$54m</td>
+          <td class="num">~12–15×</td>
+          <td class="num">n/a</td>
+          <td>Peak crypto frenzy; stock deal; loss-making at acquisition</td>
+        </tr>
+        <tr>
+          <td><strong>JustGiving → Blackbaud</strong></td>
+          <td class="num">2017</td>
+          <td class="num">~$96m</td>
+          <td class="num">~3–4×</td>
+          <td class="num">~12×</td>
+          <td>UK charity-tech incumbent rolled into Blackbaud platform</td>
+        </tr>
+        <tr>
+          <td><strong>Classy → GoFundMe</strong></td>
+          <td class="num">2022</td>
+          <td class="num">~$200m</td>
+          <td class="num">~4–5×</td>
+          <td class="num">~15×</td>
+          <td>Charity-tech consolidation; non-profit-side platform tuck-in</td>
+        </tr>
+        <tr>
+          <td><strong>Benevity → Hg Capital</strong></td>
+          <td class="num">2020</td>
+          <td class="num">~$1.1bn</td>
+          <td class="num">~8–10×</td>
+          <td class="num">~18×</td>
+          <td>PE rollup at $100m+ ARR; the closest scale precedent for our platform</td>
+        </tr>
+        <tr>
+          <td><strong>Pushpay (de-listed)</strong></td>
+          <td class="num">2023</td>
+          <td class="num">~$1.4bn</td>
+          <td class="num">~6×</td>
+          <td class="num">~16×</td>
+          <td>NZX-listed religious giving platform; PE take-private (Sixth Street + BGH)</td>
+        </tr>
+        <tr style="background: var(--gold-soft);">
+          <td><strong>Median strategic precedent</strong></td>
+          <td class="num">—</td>
+          <td class="num">—</td>
+          <td class="num"><strong>~5–8×</strong></td>
+          <td class="num"><strong>~14–18×</strong></td>
+          <td>The anchor band applied to our base case</td>
         </tr>
       </tbody>
     </table>
 
+    <p style="margin-top: 16px; font-size: 16px; color: var(--muted); font-family: 'Inter', sans-serif;">
+      <strong>Sources:</strong>
+      <a href="https://www.blackbaud.com/newsroom/article/blackbaud-completes-acquisition-of-justgiving" style="color: var(--muted); text-decoration: underline;">Blackbaud–JustGiving acquisition (Blackbaud newsroom)</a> ·
+      <a href="https://venturebeat.com/business/u-k-based-fundraising-platform-justgiving-acquired-by-blackbaud-for-120-million" style="color: var(--muted); text-decoration: underline;">JustGiving deal coverage and turnover</a> ·
+      <a href="https://www.theglobeandmail.com/business/article-uk-private-equity-firm-to-buy-calgarys-benevity-for-more-than-us/" style="color: var(--muted); text-decoration: underline;">Benevity $1.1bn Hg acquisition</a>
+    </p>
+
+    <h3 style="margin-top: 56px;">Three-way valuation triangulation</h3>
+    <p class="column" style="margin-top: 14px;">
+      Top-tier sell-side practice triangulates against trading comps (public adjacents), transaction comps
+      (M&amp;A precedents), and a DCF intrinsic value. The three lenses converge tightly for the base case —
+      which is the test of a defensible number.
+    </p>
+
+    <div class="insight" style="margin-top: 20px;">
+      <h4>DCF anchor</h4>
+      <p>Y5 base-case EBITDA £5.5m, growing 25% per year for five further years to £16.8m, declining to 8%
+      terminal growth, 12% WACC reflecting a regulated-FS risk premium, 15% regulatory-discount factor for
+      the tail risks ranked in Section 09: enterprise-value range <strong>£75–105m</strong>. Sensitivity to
+      terminal growth and WACC keeps the band within ±20% across reasonable assumptions.</p>
+    </div>
+
+    <table style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th>Lens</th>
+          <th class="num">Bear (Y5)</th>
+          <th class="num">Base (Y5)</th>
+          <th class="num">Bull (Y5)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Volume / Revenue / EBITDA</td>
+          <td class="num">£50m / £2.0m / £650k</td>
+          <td class="num">£180m / £8.3m / £5.5m</td>
+          <td class="num">£450m / £17.5m / £12.5m</td>
+        </tr>
+        <tr>
+          <td>Trading comps (public adjacents)</td>
+          <td class="num">£10–16m</td>
+          <td class="num">£65–95m</td>
+          <td class="num">£175–250m</td>
+        </tr>
+        <tr>
+          <td>Transaction comps (M&amp;A precedents)</td>
+          <td class="num">£8–14m</td>
+          <td class="num">£55–95m</td>
+          <td class="num">£150–230m</td>
+        </tr>
+        <tr>
+          <td>DCF (intrinsic)</td>
+          <td class="num">£12–20m</td>
+          <td class="num">£75–105m</td>
+          <td class="num">£200–270m</td>
+        </tr>
+        <tr style="background: var(--gold-soft);">
+          <td><strong>Triangulated band</strong></td>
+          <td class="num"><strong>£10–18m</strong></td>
+          <td class="num"><strong>£70–100m</strong></td>
+          <td class="num"><strong>£180–250m</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      The bear case at £650k EBITDA is sub-scale for a competitive strategic process — most likely realised
+      as an aqui-hire or PE platform tuck-in rather than a contested auction. Base and bull both clear the
+      threshold for a five-bidder process.
+    </p>
+
     <div class="grid-3" style="margin-top: 40px;">
       <div class="stat">
-        <div class="stat-value">£20<em>–30m</em></div>
-        <div class="stat-label">Bear case Y5 exit valuation</div>
+        <div class="stat-value">£10<em>–18m</em></div>
+        <div class="stat-label">Bear Y5 — aqui-hire / tuck-in</div>
       </div>
       <div class="stat">
-        <div class="stat-value">£50<em>–80m</em></div>
-        <div class="stat-label">Base case Y5 exit valuation</div>
+        <div class="stat-value">£70<em>–100m</em></div>
+        <div class="stat-label">Base Y5 — competitive strategic process</div>
       </div>
       <div class="stat">
-        <div class="stat-value">£120<em>–180m</em></div>
-        <div class="stat-label">Bull case Y5 exit valuation</div>
+        <div class="stat-value">£180<em>–250m</em></div>
+        <div class="stat-label">Bull Y5 — venture-grade exit, 6 markets at scale</div>
       </div>
     </div>
 
-    <div class="callout" style="margin-top: 40px;">
-      <p><strong>The valuation reality check.</strong> Multiples are anchored to actual precedent in the space —
-      Blackbaud's <a href="https://www.blackbaud.com/newsroom/article/blackbaud-completes-acquisition-of-justgiving" style="color: var(--gold); text-decoration: underline;">£95m JustGiving acquisition</a>
-      in 2017 (3.8× revenue) and Hg Capital's
-      <a href="https://www.theglobeandmail.com/business/article-uk-private-equity-firm-to-buy-calgarys-benevity-for-more-than-us/" style="color: var(--gold); text-decoration: underline;">$1.1bn Benevity deal</a>
-      in 2020 (~10× revenue). The bull case (£180m) sits at ~13% of Blackbaud's current
-      <a href="https://public.com/stocks/blkb/market-cap" style="color: var(--gold); text-decoration: underline;">$1.7bn market cap</a>
-      — large but not transformational — and just 0.24% of
-      <a href="https://techcrunch.com/2025/11/24/revolut-hits-75b-valuation-in-new-capital-raise/" style="color: var(--gold); text-decoration: underline;">Revolut's $75bn valuation</a>.</p>
-    </div>
-
-    <div class="callout" style="margin-top: 28px;">
-      <p><strong>The instinct on who's most likely.</strong> Three credible strategic acquirers by end of Year 5:
-      <strong>Revolut</strong> — UK-licensed crypto provider with the
-      <a href="https://fortune.com/crypto/2024/05/07/revolut-expands-crypto-push-with-uk-trading-platform/" style="color: var(--gold); text-decoration: underline;">Revolut X exchange</a>,
-      a HNW Ultra push, $75bn cap, $13bn expansion warchest, and an
-      <a href="https://tech.eu/2024/11/08/revolut-to-beef-up-ma-team-as-hunts-out-acquisition-targets/" style="color: var(--gold); text-decoration: underline;">M&amp;A team built out in 2024</a>;
-      <strong>Coinbase Ventures</strong> for the ESG narrative and UK regulatory goodwill they need;
-      and <strong>Charities Aid Foundation (CAF)</strong> via a commercial subsidiary
-      (<a href="https://www.gov.uk/government/publications/trustees-trading-and-tax-how-charities-may-lawfully-trade-cc35/trustees-trading-and-tax-how-charities-may-lawfully-trade" style="color: var(--gold); text-decoration: underline;">trading-subsidiary mechanic</a>)
-      for the crypto capability gap they can no longer defer — realistic ceiling £50–80m given the
-      <a href="https://www.civilsociety.co.uk/news/caf-makes-another-record-distribution-to-charities-despite-challenging-conditions.html" style="color: var(--gold); text-decoration: underline;">£283m CAF Bank loan book</a>.
-      The first to commit likely triggers a bidding dynamic that anchors valuation in the upper half of the base range.</p>
-    </div>
-
-    <p style="margin-top: 32px; font-size: 16px; color: var(--muted); font-family: 'Inter', sans-serif;">
-      <strong>Sources:</strong>
-      <a href="https://public.com/stocks/blkb/market-cap" style="color: var(--muted); text-decoration: underline;">Blackbaud market cap (BLKB)</a> ·
-      <a href="https://www.blackbaud.com/newsroom/article/blackbaud-completes-acquisition-of-justgiving" style="color: var(--muted); text-decoration: underline;">Blackbaud–JustGiving £95m acquisition</a> ·
-      <a href="https://venturebeat.com/business/u-k-based-fundraising-platform-justgiving-acquired-by-blackbaud-for-120-million" style="color: var(--muted); text-decoration: underline;">JustGiving 2016 turnover £24.9m</a> ·
-      <a href="https://www.civilsociety.co.uk/news/caf-makes-another-record-distribution-to-charities-despite-challenging-conditions.html" style="color: var(--muted); text-decoration: underline;">CAF 2024–25 financials</a> ·
-      <a href="https://www.theglobeandmail.com/business/article-uk-private-equity-firm-to-buy-calgarys-benevity-for-more-than-us/" style="color: var(--muted); text-decoration: underline;">Benevity $1.1bn Hg acquisition</a> ·
-      <a href="https://techcrunch.com/2025/11/24/revolut-hits-75b-valuation-in-new-capital-raise/" style="color: var(--muted); text-decoration: underline;">Revolut $75bn valuation</a> ·
-      <a href="https://fortune.com/crypto/2024/05/07/revolut-expands-crypto-push-with-uk-trading-platform/" style="color: var(--muted); text-decoration: underline;">Revolut X UK crypto launch</a> ·
-      <a href="https://tech.eu/2024/11/08/revolut-to-beef-up-ma-team-as-hunts-out-acquisition-targets/" style="color: var(--muted); text-decoration: underline;">Revolut M&amp;A team build-out</a> ·
-      <a href="https://www.gov.uk/government/publications/trustees-trading-and-tax-how-charities-may-lawfully-trade-cc35/trustees-trading-and-tax-how-charities-may-lawfully-trade" style="color: var(--muted); text-decoration: underline;">UK charity trading subsidiary rules (gov.uk)</a>
+    <h3 style="margin-top: 56px;">Deal structure — what gets paid at close</h3>
+    <p class="column" style="margin-top: 14px;">
+      Real regulated-FS strategic acquisitions are not clean cash. Headline EV is split across cash, earn-out,
+      retention, and escrow. Founder-takeable cash at close is typically ~55–65% of headline.
     </p>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th class="num">% of headline EV</th>
+          <th>Typical mechanics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cash at close</strong></td>
+          <td class="num">55–65%</td>
+          <td>Wired on completion, subject to working-capital true-up</td>
+        </tr>
+        <tr>
+          <td><strong>Earn-out</strong></td>
+          <td class="num">25–35%</td>
+          <td>Tied to 2-year volume / revenue / regulatory-milestone targets</td>
+        </tr>
+        <tr>
+          <td><strong>Founder retention</strong></td>
+          <td class="num">8–12%</td>
+          <td>3-year vesting cliff; sometimes structured as new acquirer equity</td>
+        </tr>
+        <tr>
+          <td><strong>Escrow holdback</strong></td>
+          <td class="num">5–10%</td>
+          <td>Warranties &amp; indemnities; released over 12–24 months</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 14px; color: var(--muted); font-style: italic; margin-top: 12px; font-family: 'Inter', sans-serif;">
+      Worked example on a £90m base-case headline: ~£54m cash at close, ~£27m at-risk earn-out, ~£9m
+      retention vesting, ~£6m escrow. Plus a regulatory-transfer condition precedent for FCA s.21 approval
+      and Charity Commission trustee changes — both standard, both add 60–90 days to close.
+    </p>
+
+    <h3 style="margin-top: 56px;">Process timeline</h3>
+    <p class="column" style="margin-top: 14px;">
+      A Year-5 close means the process starts in 2028, not 2030. Informal soundings via founder network
+      precede formal banker engagement by ~6 months.
+    </p>
+    <table style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Window</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Informal soundings via corp-dev teams of named candidates</td>
+          <td class="num">Q3–Q4 2028</td>
+        </tr>
+        <tr>
+          <td>Banker engagement (sell-side mandate)</td>
+          <td class="num">Q1 2029</td>
+        </tr>
+        <tr>
+          <td>Data room ready; IM circulated</td>
+          <td class="num">Q3 2029</td>
+        </tr>
+        <tr>
+          <td>Preliminary bids</td>
+          <td class="num">Q4 2029</td>
+        </tr>
+        <tr>
+          <td>Final bids; exclusivity granted</td>
+          <td class="num">Q1 2030</td>
+        </tr>
+        <tr>
+          <td>Sign; regulatory condition precedent</td>
+          <td class="num">Q2–Q3 2030</td>
+        </tr>
+        <tr>
+          <td><strong>Close</strong></td>
+          <td class="num"><strong>H2 2030</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 56px;">Acquisition readiness — what makes us cleanly acquirable</h3>
+    <div class="moat-list" style="margin-top: 20px;">
+      <div class="moat-item">
+        <div class="moat-num">i.</div>
+        <div>
+          <h3>Clean group structure</h3>
+          <p>UK OpCo + UK CIO + SG HoldCo, no minority shareholders, no convertible debt overhang, no
+          founder-vendor loans. The structure transfers as a clean share sale of the SG HoldCo — see Section
+          09 for the full spine.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">ii.</div>
+        <div>
+          <h3>Separable revenue streams</h3>
+          <p>Core platform fee, API licensing, white-label DAF SaaS, enterprise contracts, float income — each
+          stream is independently reportable from Day 1 (see Section 05). Acquirer can underwrite the streams
+          they value most and divest the rest.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">iii.</div>
+        <div>
+          <h3>Portable tech stack</h3>
+          <p>Standard cloud infra (no exotic dependencies), IP held in SG HoldCo on a separately-assignable
+          licence to UK OpCo. No proprietary database, no custom ML stack that would create transfer
+          friction.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">iv.</div>
+        <div>
+          <h3>No customer concentration</h3>
+          <p>Top-donor cap enforced at 15% of annual volume by design. Acquirer's diligence shows no single
+          donor whose departure would materially impair the business — the platform is the product, not any
+          one whale.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">v.</div>
+        <div>
+          <h3>Transferable regulatory approvals</h3>
+          <p>FCA s.21 promotion arrangement sits with UK OpCo; Charity Commission registration sits with the
+          Foundation (independently governed, trustee-controlled). Both transferable under standard
+          conditions precedent — no founder-personal licences that block change-of-control.</p>
+        </div>
+      </div>
+      <div class="moat-item">
+        <div class="moat-num">vi.</div>
+        <div>
+          <h3>Audit-ready accounts from Year 2</h3>
+          <p>Top-tier mid-tier auditor (Mazars / BDO equivalent) engaged from Year 2; Big Four for Year 3+.
+          QoE study commissioned 12 months ahead of process. No diligence-stage surprises on revenue
+          recognition or related-party arrangements (transfer-pricing study commissioned at incorporation per
+          Section 09).</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">Alternative exits — fallback optionality</h3>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="card">
+        <h3>AIM listing (UK)</h3>
+        <p>£8.3m revenue / £5.5m EBITDA comfortably clears AIM admission thresholds. Pushpay reached $1.4bn at
+        a similar profile on NZX. Not the preferred route — public-market visibility creates regulatory
+        scrutiny we'd rather avoid pre-scale — but a credible fallback that creates negotiating leverage in
+        a strategic process. Worth signalling to bidders.</p>
+      </div>
+      <div class="card">
+        <h3>Secondary at Series B (Y3)</h3>
+        <p>If a Series B funding round happens at Y3, a partial founder secondary of £5–10m is plausible
+        without triggering exit. Increasingly standard in PE-led growth rounds. De-risks the founder without
+        compromising the platform's medium-term independence — and keeps acquirer optionality open.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px;">The instinct — who, and what to watch for</h3>
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="card">
+        <h3>Coinbase Inc. <span class="badge badge-gold" style="margin-left: 6px;">Strategic</span></h3>
+        <p>Twice expanded UK regulatory permissions in 2024–25; UK ESG narrative is a stated 2026 corporate
+        priority. M&amp;A history (Tagomi, Bison Trails, FairX) shows appetite for capability tuck-ins. Most
+        probable crypto-side strategic.</p>
+      </div>
+      <div class="card">
+        <h3>Hg Capital <span class="badge badge-moss" style="margin-left: 6px;">PE rollup</span></h3>
+        <p>Currently holds Benevity; thesis fit for an EMEA charity-tech rollup with Bitcoin for Good as platform asset.
+        Most probable PE outcome — and PE generally bids when strategics hesitate, which puts a floor under
+        valuation.</p>
+      </div>
+      <div class="card">
+        <h3>Blackbaud <span class="badge badge-gold" style="margin-left: 6px;">Strategic</span></h3>
+        <p>Owns JustGiving; the most exposed UK incumbent to a crypto-rail emergence. A CAF licensing
+        partnership announcement would force their hand. Watch for any signal of crypto-product roadmap
+        movement on the Blackbaud side.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 36px;">
+      <p><strong>The process dynamic.</strong> Five bidders in the room, two PE houses on the side, AIM as
+      the credible alternative. The first strategic credible offer typically triggers a 60–90 day
+      exclusivity window, during which the banker systematically informs the other named candidates —
+      forcing a competitive response. The brief assumes a contested process, not a bilateral negotiation.
+      Bilateral typically prices 15–25% below contested for the same asset.</p>
+    </div>
   </div>
 </section>
 
@@ -2317,10 +2996,11 @@
     <h3 style="margin-top: 56px;">Funding implication</h3>
     <p class="column">Year 1 and Year 2 run at ~£150–250k annual burn on the base case. A modest pre-seed or
     angel round (£300–500k) covers the pre-break-even window with comfort. Bootstrap is also credible if
-    founder can absorb the personal-income gap. The pre-launch legal slice is itself cost-disciplined:
-    Charity Commission pre-registration engagement (free) precedes the CIO filing, and the tax-counsel
-    opinion is commissioned on a fixed fee after free scoping calls with 2–3 firms — never hourly. Brief
-    deliberately does not prescribe the funding route.</p>
+    founder can absorb the personal-income gap. The pre-launch legal slice is itself cost-disciplined: the
+    CIO package is self-drafted from the Charity Commission's model Foundation CIO constitution, the
+    services agreement is then red-teamed by a charity-law partner on a fixed-fee 60-min consult, and the
+    tax-counsel opinion is commissioned on a fixed fee after free scoping calls with 2–3 firms — never
+    hourly. Brief deliberately does not prescribe the funding route.</p>
   </div>
 </section>
 
@@ -2332,7 +3012,7 @@
         <div class="footer-mark">Bitcoin <em>for</em> Good</div>
         <p style="margin-top: 6px;">Sats for Good Ltd · Sats for Good Foundation (CIO pending)</p>
       </div>
-      <p>Confidential Brief · April 2026 · not for distribution</p>
+      <p>Confidential Brief · May 2026 · not for distribution</p>
     </div>
   </div>
 </footer>
